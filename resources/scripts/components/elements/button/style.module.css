@@ -1,6 +1,6 @@
 .button {
     @apply px-4 py-2 inline-flex items-center justify-center;
-    @apply rounded-md text-base text-primary-50 transition-all duration-100;
+    @apply rounded text-base text-primary-50 transition-all duration-100;
 
     /* Sizing Controls */
     &.small {
