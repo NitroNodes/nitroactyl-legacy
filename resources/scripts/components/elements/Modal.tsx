@@ -102,6 +102,23 @@ const Modal: React.FC<ModalProps> = ({
                 }}
             >
                 <ModalContainer alignTop={top}>
+                    {isDismissable && (
+                        <div className={'close-icon'} onClick={() => setRender(false)}>
+                            <svg
+                                xmlns={'http://www.w3.org/2000/svg'}
+                                fill={'none'}
+                                viewBox={'0 0 24 24'}
+                                stroke={'currentColor'}
+                            >
+                                <path
+                                    strokeLinecap={'round'}
+                                    strokeLinejoin={'round'}
+                                    strokeWidth={'2'}
+                                    d={'M6 18L18 6M6 6l12 12'}
+                                />
+                            </svg>
+                        </div>
+                    )}
                     {showSpinnerOverlay && (
                         <Fade timeout={150} appear in>
                             <div
@@ -115,25 +132,6 @@ const Modal: React.FC<ModalProps> = ({
                     <div
                         css={tw`bg-neutral-800 p-3 sm:p-4 md:p-6 rounded shadow-md overflow-y-scroll transition-all duration-150`}
                     >
-                        {isDismissable && (
-                            <div className={'absolute right-0 top-6 m-4'}>
-                                <div className={'close-icon'} onClick={() => setRender(false)}>
-                                    <svg
-                                        xmlns={'http://www.w3.org/2000/svg'}
-                                        fill={'none'}
-                                        viewBox={'0 0 24 24'}
-                                        stroke={'currentColor'}
-                                    >
-                                        <path
-                                            strokeLinecap={'round'}
-                                            strokeLinejoin={'round'}
-                                            strokeWidth={'2'}
-                                            d={'M6 18L18 6M6 6l12 12'}
-                                        />
-                                    </svg>
-                                </div>
-                            </div>
-                        )}
                         {children}
                     </div>
                 </ModalContainer>

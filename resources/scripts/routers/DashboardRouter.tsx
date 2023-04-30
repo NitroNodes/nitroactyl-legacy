@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
-import NavigationBar from '@/components/NavigationBar';
 import DashboardContainer from '@/components/dashboard/DashboardContainer';
 import { NotFound } from '@/components/elements/ScreenBlock';
 import TransitionRouter from '@/TransitionRouter';
@@ -8,13 +7,17 @@ import SubNavigation from '@/components/elements/SubNavigation';
 import { useLocation } from 'react-router';
 import Spinner from '@/components/elements/Spinner';
 import routes from '@/routers/routes';
+import SidePanel from '@/components/SidePanel';
+import MobileNavigation from '@/components/MobileNavigation';
+import useWindowDimensions from '@/plugins/useWindowDimensions';
 
 export default () => {
     const location = useLocation();
+    const { width } = useWindowDimensions();
 
     return (
         <>
-            <NavigationBar />
+            {width >= 1280 ? <SidePanel /> : <MobileNavigation />}
             {location.pathname.startsWith('/account') && (
                 <SubNavigation>
                     <div>
