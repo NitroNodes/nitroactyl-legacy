@@ -38,7 +38,7 @@ export default forwardRef<HTMLFormElement, Props>(({ title, ...props }, ref) => 
             </div>
         </Form>
         <p css={tw`text-center text-neutral-500 text-xs mt-4`}>
-            &copy; {new Date().getFullYear()}&nbsp; NitroNodes, built on pterodactyl
+            &copy; {new Date().getFullYear()}&nbsp;NitroNodes, built on pterodactyl
         </p>
     </Container>
 ));
