@@ -24,7 +24,7 @@ const Container = styled.div`
 
     ${breakpoint('xl')`
         ${tw`w-full`}
-        max-width: 700px;
+        max-width: 500px;
     `};
 `;
 
