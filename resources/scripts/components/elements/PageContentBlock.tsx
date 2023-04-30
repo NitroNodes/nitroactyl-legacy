@@ -26,7 +26,7 @@ const PageContentBlock: React.FC<PageContentBlockProps> = ({ title, showFlashKey
                 </ContentContainer>
                 <ContentContainer css={tw`mb-4`}>
                     <p css={tw`text-center text-neutral-500 text-xs`}>
-                        &copy; {new Date().getFullYear()}&nbsp;NitroNodes, built on pterodactyl
+                        &copy; {new Date().getFullYear()}&nbsp;NitroNodes, built on Pterodactyl
                     </p>
                 </ContentContainer>
             </>

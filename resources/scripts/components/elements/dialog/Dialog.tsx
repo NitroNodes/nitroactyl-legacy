@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { Dialog as HDialog } from '@headlessui/react';
-import { Button } from '@/components/elements/button/index';
 import { XIcon } from '@heroicons/react/solid';
 import { AnimatePresence, motion } from 'framer-motion';
 import { DialogContext, IconPosition, RenderDialogProps, styles } from './';
@@ -10,7 +9,7 @@ const variants = {
         scale: 1,
         opacity: 1,
         transition: {
-            type: 'spring',
+            type: 'easeIn',
             damping: 15,
             stiffness: 300,
             duration: 0.15,
@@ -72,7 +71,7 @@ export default ({
                         open={open}
                         onClose={onDialogClose}
                     >
-                        <div className={'fixed inset-0 bg-gray-900/50 z-40'} />
+                        <div className={'fixed inset-0 bg-gray-900 z-40'} />
                         <div className={'fixed inset-0 overflow-y-auto z-50'}>
                             <div
                                 ref={container}
@@ -110,14 +109,7 @@ export default ({
                                     {/* Keep this below the other buttons so that it isn't the default focus if they're present. */}
                                     {!hideCloseIcon && (
                                         <div className={'absolute right-0 top-0 m-4'}>
-                                            <Button.Text
-                                                size={Button.Sizes.Small}
-                                                shape={Button.Shapes.IconSquare}
-                                                onClick={onClose}
-                                                className={'group'}
-                                            >
-                                                <XIcon className={styles.close_icon} />
-                                            </Button.Text>
+                                            <XIcon onClick={onClose} className={styles.close_icon} />
                                         </div>
                                     )}
                                 </HDialog.Panel>
