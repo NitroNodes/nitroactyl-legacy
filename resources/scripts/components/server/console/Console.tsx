@@ -15,8 +15,7 @@ import { ServerContext } from '@/state/server';
 import { usePermissions } from '@/plugins/usePermissions';
 import tw, { theme as th } from 'twin.macro';
 import { SocketEvent, SocketRequest } from '@/components/server/events';
-import useEventListener from '@/plugins/useEventListener';
-import { usePermissions } from '@/plugins/usePermissions';
+import useEventListener from '@/plugins/useEventListener';;
 import { usePersistedState } from '@/plugins/usePersistedState';
 import { ServerContext } from '@/state/server';
 
