@@ -24,10 +24,13 @@ import { hashToPath } from '@/helpers';
 import style from './style.module.css';
 import Input from '@/components/elements/Input';
 
-
 const sortFiles = (files: FileObject[], searchString: string): FileObject[] => {
-    const sortedFiles: FileObject[] = files.sort((a, b) => a.name.localeCompare(b.name)).sort((a, b) => a.isFile === b.isFile ? 0 : (a.isFile ? 1 : -1));
-    return sortedFiles.filter((file, index) => index === 0 || file.name !== sortedFiles[index - 1].name).filter((file) => file.name.toLowerCase().includes(searchString.toLowerCase()));
+    const sortedFiles: FileObject[] = files
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .sort((a, b) => (a.isFile === b.isFile ? 0 : a.isFile ? 1 : -1));
+    return sortedFiles
+        .filter((file, index) => index === 0 || file.name !== sortedFiles[index - 1].name)
+        .filter((file) => file.name.toLowerCase().includes(searchString.toLowerCase()));
 };
 
 export default () => {
@@ -41,7 +44,7 @@ export default () => {
     const setSelectedFiles = ServerContext.useStoreActions((actions) => actions.files.setSelectedFiles);
     const selectedFilesLength = ServerContext.useStoreState((state) => state.files.selectedFiles.length);
 
-    const [ searchString, setSearchString ] = useState('');
+    const [searchString, setSearchString] = useState('');
 
     useEffect(() => {
         clearFlashes('files');
@@ -88,9 +91,7 @@ export default () => {
                         onChange={searchFiles}
                         css={tw`md:mx-6 w-full px-4 mb-4 md:mb-0`}
                         placeholder='Search'
-
-                    >
-                    </Input>
+                    ></Input>
                     <Can action={'file.create'}>
                         <div className={style.manager_actions}>
                             <FileManagerStatus />

@@ -3,7 +3,7 @@ import http from '@/api/http';
 
 import { useStoreState } from 'easy-peasy';
 import { NavLink } from 'react-router-dom';
-import { faCogs, faSearch, faServer, faShoppingCart, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCogs, faPlus, faSearch, faServer, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SearchModal from '@/components/dashboard/search/SearchModal';
 
@@ -72,7 +72,7 @@ export default () => {
                                 }
                                 activeClassName='text-primary-400'
                             >
-                                <FontAwesomeIcon icon={faShoppingCart} />
+                                <FontAwesomeIcon icon={faPlus} />
                                 <span className='ml-3'>Store</span>
                             </NavLink>
                         </li>

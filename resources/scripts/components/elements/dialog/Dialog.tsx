@@ -71,7 +71,7 @@ export default ({
                         open={open}
                         onClose={onDialogClose}
                     >
-                        <div className={'fixed inset-0 bg-gray-900 z-40'} />
+                        <div className={'fixed inset-0 bg-gray-900 opacity-50 z-40'} />
                         <div className={'fixed inset-0 overflow-y-auto z-50'}>
                             <div
                                 ref={container}
