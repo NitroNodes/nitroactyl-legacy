@@ -15,7 +15,7 @@ class InfoCommand extends Command
     /**
      * VersionCommand constructor.
      */
-    public function __construct(private ConfigRepository $config, private SoftwareVersionService $versionService)
+    public function __construct(private ConfigRepository $config, private SoftwareVersionService $softwareVersionService)
     {
         parent::__construct();
     }
@@ -27,9 +27,9 @@ class InfoCommand extends Command
     {
         $this->output->title('Version Information');
         $this->table([], [
-            ['Panel Version', $this->config->get('app.version')],
-            ['Latest Version', $this->versionService->getPanel()],
-            ['Up-to-Date', $this->versionService->isLatestPanel() ? 'Yes' : $this->formatText('No', 'bg=red')],
+            ['Panel Version', $this->softwareVersionService->getCurrentVersion()],
+            ['Latest Version', $this->softwareVersionService->getLatestPanel()],
+            ['Up-to-Date', $this->softwareVersionService->isLatestPanel() ? 'Yes' : $this->formatText('No', 'bg=red')],
             ['Unique Identifier', $this->config->get('pterodactyl.service.author')],
         ], 'compact');
 
@@ -58,15 +58,16 @@ class InfoCommand extends Command
             ['Username', $this->config->get("database.connections.$driver.username")],
         ], 'compact');
 
+        // TODO: Update this to handle other mail drivers
         $this->output->title('Email Configuration');
         $this->table([], [
-            ['Driver', $this->config->get('mail.driver')],
-            ['Host', $this->config->get('mail.host')],
-            ['Port', $this->config->get('mail.port')],
-            ['Username', $this->config->get('mail.username')],
+            ['Driver', $this->config->get('mail.default')],
+            ['Host', $this->config->get('mail.mailers.smtp.host')],
+            ['Port', $this->config->get('mail.mailers.smtp.port')],
+            ['Username', $this->config->get('mail.mailers.smtp.username')],
             ['From Address', $this->config->get('mail.from.address')],
             ['From Name', $this->config->get('mail.from.name')],
-            ['Encryption', $this->config->get('mail.encryption')],
+            ['Encryption', $this->config->get('mail.mailers.smtp.encryption')],
         ], 'compact');
     }
 

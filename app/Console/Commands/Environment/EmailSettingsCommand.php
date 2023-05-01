@@ -49,7 +49,7 @@ class EmailSettingsCommand extends Command
                 'mandrill' => 'Mandrill Transactional Email',
                 'postmark' => 'Postmark Transactional Email',
             ],
-            $this->config->get('mail.driver', 'smtp')
+            $this->config->get('mail.default', 'smtp')
         );
 
         $method = 'setup' . studly_case($this->variables['MAIL_DRIVER']) . 'DriverVariables';
@@ -57,7 +57,7 @@ class EmailSettingsCommand extends Command
             $this->{$method}();
         }
 
-        $this->variables['MAIL_FROM'] = $this->option('email') ?? $this->ask(
+        $this->variables['MAIL_FROM_ADDRESS'] = $this->option('email') ?? $this->ask(
             trans('command/messages.environment.mail.ask_mail_from'),
             $this->config->get('mail.from.address')
         );
@@ -65,12 +65,6 @@ class EmailSettingsCommand extends Command
         $this->variables['MAIL_FROM_NAME'] = $this->option('from') ?? $this->ask(
             trans('command/messages.environment.mail.ask_mail_name'),
             $this->config->get('mail.from.name')
-        );
-
-        $this->variables['MAIL_ENCRYPTION'] = $this->option('encryption') ?? $this->choice(
-            trans('command/messages.environment.mail.ask_encryption'),
-            ['tls' => 'TLS', 'ssl' => 'SSL', '' => 'None'],
-            $this->config->get('mail.encryption', 'tls')
         );
 
         $this->writeToEnvironment($this->variables);
@@ -86,21 +80,27 @@ class EmailSettingsCommand extends Command
     {
         $this->variables['MAIL_HOST'] = $this->option('host') ?? $this->ask(
             trans('command/messages.environment.mail.ask_smtp_host'),
-            $this->config->get('mail.host')
+            $this->config->get('mail.mailers.smtp.host')
         );
 
         $this->variables['MAIL_PORT'] = $this->option('port') ?? $this->ask(
             trans('command/messages.environment.mail.ask_smtp_port'),
-            $this->config->get('mail.port')
+            $this->config->get('mail.mailers.smtp.port')
         );
 
         $this->variables['MAIL_USERNAME'] = $this->option('username') ?? $this->ask(
             trans('command/messages.environment.mail.ask_smtp_username'),
-            $this->config->get('mail.username')
+            $this->config->get('mail.mailers.smtp.username')
         );
 
         $this->variables['MAIL_PASSWORD'] = $this->option('password') ?? $this->secret(
             trans('command/messages.environment.mail.ask_smtp_password')
+        );
+
+        $this->variables['MAIL_ENCRYPTION'] = $this->option('encryption') ?? $this->choice(
+            trans('command/messages.environment.mail.ask_encryption'),
+            ['tls' => 'TLS', 'ssl' => 'SSL', '' => 'None'],
+            $this->config->get('mail.mailers.smtp.encryption', 'tls')
         );
     }
 
