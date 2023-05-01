@@ -15,10 +15,8 @@ import { ServerContext } from '@/state/server';
 import { usePermissions } from '@/plugins/usePermissions';
 import tw, { theme as th } from 'twin.macro';
 import { SocketEvent, SocketRequest } from '@/components/server/events';
-import useEventListener from '@/plugins/useEventListener';;
+import useEventListener from '@/plugins/useEventListener';
 import { usePersistedState } from '@/plugins/usePersistedState';
-import { ServerContext } from '@/state/server';
-
 import 'xterm/css/xterm.css';
 import styles from './style.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
