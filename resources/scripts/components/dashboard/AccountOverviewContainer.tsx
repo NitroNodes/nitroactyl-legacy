@@ -30,7 +30,7 @@ export default () => {
     const { state } = useLocation<undefined | { twoFactorRedirect?: boolean }>();
 
     return (
-        <PageContentBlock title={'Account Overview'}>
+        <PageContentBlock title={'Account Overview'} description={'View and update account details.'}>
             {state?.twoFactorRedirect && (
                 <MessageBox title={'2-Factor Required'} type={'error'}>
                     Your account must have two-factor authentication enabled in order to continue.

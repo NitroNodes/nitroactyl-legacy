@@ -25,7 +25,7 @@ export default () => {
     }, [error]);
 
     return (
-        <PageContentBlock title={'SSH Keys'}>
+        <PageContentBlock title={'SSH Keys'} description={'Create SSH keys to connect to your servers.'}>
             <FlashMessageRender byKey={'account'} />
             <div css={tw`md:flex flex-nowrap my-10`}>
                 <ContentBox title={'Add SSH Key'} css={tw`flex-none w-full md:w-1/2`}>

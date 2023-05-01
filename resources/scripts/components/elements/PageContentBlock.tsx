@@ -6,11 +6,18 @@ import FlashMessageRender from '@/components/FlashMessageRender';
 
 export interface PageContentBlockProps {
     title?: string;
+    description?: string;
     className?: string;
     showFlashKey?: string;
 }
 
-const PageContentBlock: React.FC<PageContentBlockProps> = ({ title, showFlashKey, className, children }) => {
+const PageContentBlock: React.FC<PageContentBlockProps> = ({
+    title,
+    description,
+    showFlashKey,
+    className,
+    children,
+}) => {
     useEffect(() => {
         if (title) {
             document.title = title;
@@ -22,6 +29,12 @@ const PageContentBlock: React.FC<PageContentBlockProps> = ({ title, showFlashKey
             <>
                 <ContentContainer css={tw`my-4 sm:my-10`} className={className}>
                     {showFlashKey && <FlashMessageRender byKey={showFlashKey} css={tw`mb-4`} />}
+                    {description && (
+                        <div className={'my-10 j-left'}>
+                            <h1 className={'text-5xl'}>{title}</h1>
+                            <h3 className={'text-2xl text-neutral-500'}>{description}</h3>
+                        </div>
+                    )}
                     {children}
                 </ContentContainer>
                 <ContentContainer css={tw`mb-4`}>

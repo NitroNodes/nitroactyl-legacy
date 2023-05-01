@@ -31,7 +31,7 @@ export default () => {
     }, [error]);
 
     return (
-        <PageContentBlock title={'Account Activity Log'}>
+        <PageContentBlock title={'Account Activity Log'} description={'View your accounts activity logs'}>
             <FlashMessageRender byKey={'account'} />
             {(filters.filters?.event || filters.filters?.ip) && (
                 <div className={'flex justify-end mb-2'}>
