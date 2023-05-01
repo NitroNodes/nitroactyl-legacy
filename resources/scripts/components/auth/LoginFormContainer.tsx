@@ -33,14 +33,14 @@ export default forwardRef<HTMLFormElement, Props>(({ title, ...props }, ref) => 
         <a href='https://www.nitronodes.xyz'>
             <img
                 src={'https://www.nitronodes.xyz/assets/img/logo.png'}
-                css={tw`w-32 mx-auto hover:opacity-75 duration-75 mb-4`}
+                css={tw`w-32 mx-auto hover:opacity-75 duration-75 -mt-12`}
             />
         </a>
         {title && <h2 css={tw`text-3xl text-center text-neutral-100 font-medium py-6`}>{title}</h2>}
         <FlashMessageRender css={tw`mb-2 px-1`} />
         <Form {...props} ref={ref}>
             <div css={tw`w-full bg-white shadow-lg rounded-lg p-4 mx-1`}>
-                <div css={tw`mt-2`}>{props.children}</div>
+                <div>{props.children}</div>
             </div>
         </Form>
         <p css={tw`text-center text-neutral-500 text-xs mt-6`}>

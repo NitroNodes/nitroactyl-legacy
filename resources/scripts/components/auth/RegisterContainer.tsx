@@ -84,7 +84,7 @@ const RegisterContainer = ({ history }: RouteComponentProps) => {
         >
             {({ isSubmitting, setSubmitting, submitForm }) => (
                 <LoginFormContainer title={'Register'} css={tw`w-full flex`}>
-                    <div css={tw`mt-6`}>
+                    <div>
                         <Field light type={'email'} label={'Email'} name={'email'} disabled={isSubmitting} />
                     </div>
                     <div css={tw`mt-6`}>

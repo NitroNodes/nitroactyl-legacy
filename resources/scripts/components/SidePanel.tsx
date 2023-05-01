@@ -43,7 +43,7 @@ export default () => {
                                     setVisible(true);
                                 }}
                                 className={
-                                    'navigation-link flex items-center p-2 rounded-lg text-white hover:bg-neutral-700 cursor-pointer'
+                                    'navigation-link flex items-center p-2 rounded-lg text-white hover:text-primary-400 w-full font-semibold text-lg  cursor-pointer'
                                 }
                             >
                                 <FontAwesomeIcon icon={faSearch} />
@@ -55,7 +55,7 @@ export default () => {
                                 to={'/'}
                                 exact
                                 className={
-                                    'navigation-link flex items-center p-2 rounded-lg text-white hover:bg-neutral-700'
+                                    'navigation-link flex items-center p-2 rounded-lg text-white hover:text-primary-400 w-full font-semibold text-lg '
                                 }
                                 activeClassName='text-primary-400'
                             >
@@ -68,7 +68,7 @@ export default () => {
                             <NavLink
                                 to={'/store'}
                                 className={
-                                    'navigation-link flex items-center p-2 rounded-lg text-white hover:bg-neutral-700'
+                                    'navigation-link flex items-center p-2 rounded-lg text-white hover:text-primary-400 w-full font-semibold text-lg '
                                 }
                                 activeClassName='text-primary-400'
                             >
@@ -80,7 +80,7 @@ export default () => {
                             <NavLink
                                 to={'/account'}
                                 className={
-                                    'navigation-link flex items-center p-2 rounded-lg text-white hover:bg-neutral-700'
+                                    'navigation-link flex items-center p-2 rounded-lg text-white hover:text-primary-400 w-full font-semibold text-lg '
                                 }
                                 activeClassName='text-primary-400'
                             >
@@ -93,7 +93,7 @@ export default () => {
                                 <a
                                     href={'/admin'}
                                     className={
-                                        'navigation-link flex items-center p-2 rounded-lg text-white hover:bg-neutral-700'
+                                        'navigation-link flex items-center p-2 rounded-lg text-white hover:text-primary-400 w-full font-semibold text-lg '
                                     }
                                 >
                                     <FontAwesomeIcon icon={faCogs} />
@@ -106,7 +106,7 @@ export default () => {
                                 href='#'
                                 onClick={onTriggerLogout}
                                 className={
-                                    'navigation-link absolute w-[60%] bottom-4 p-2 rounded-lg text-white hover:bg-neutral-700'
+                                    'navigation-link absolute w-[60%] bottom-4 p-2 rounded-lg text-white hover:text-primary-400 w-full '
                                 }
                             >
                                 <FontAwesomeIcon icon={faSignOutAlt} />
