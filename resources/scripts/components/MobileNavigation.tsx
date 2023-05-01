@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCogs, faServer, faShoppingCart, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useStoreState } from 'easy-peasy';
@@ -48,8 +48,8 @@ export default () => {
             <SpinnerOverlay visible={isLoggingOut} />
             <div className={'mx-auto w-full flex items-center h-[3.5rem] max-w-[1200px]'}>
                 <div id={'logo'} className={'flex-1'}>
-                    <Link
-                        to={'https://www.nitronodes.xyz'}
+                    <a
+                        href={'https://www.nitronodes.xyz'}
                         className={
                             'text-2xl font-header px-4 no-underline text-neutral-200 hover:text-neutral-100 transition-colors duration-150'
                         }
@@ -58,7 +58,7 @@ export default () => {
                             src={'https://www.nitronodes.xyz/assets/img/logo.png'}
                             css={tw`w-10 ml-2 hover:opacity-75 duration-75`}
                         />
-                    </Link>
+                    </a>
                 </div>
                 <RightNavigation className={'flex h-full items-center justify-center'}>
                     <SearchContainer />

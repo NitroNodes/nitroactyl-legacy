@@ -23,7 +23,6 @@ import routes from '@/routers/routes';
 import useWindowDimensions from '@/plugins/useWindowDimensions';
 import SidePanel from '@/components/SidePanel';
 import ProgressBar from '@/components/elements/ProgressBar';
-import tw from 'twin.macro';
 
 export default () => {
     const match = useRouteMatch<{ id: string }>();
@@ -68,7 +67,7 @@ export default () => {
 
     return (
         <React.Fragment key={'server-router'}>
-            <ProgressBar css={tw`absolute top-0 z-[101]`} />
+            <ProgressBar />
             {width >= 1800 ? <SidePanel /> : <MobileNavigation />}
             {!uuid || !id ? (
                 error ? (

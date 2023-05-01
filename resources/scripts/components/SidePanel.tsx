@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import http from '@/api/http';
 
 import { useStoreState } from 'easy-peasy';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { faCogs, faSearch, faServer, faShoppingCart, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SearchModal from '@/components/dashboard/search/SearchModal';
@@ -23,8 +23,8 @@ export default () => {
             {visible && <SearchModal appear visible={visible} onDismissed={() => setVisible(false)} />}
             <div className='fixed top-0 left-0 z-[100] w-52 h-screen' aria-label='Sidebar'>
                 <div className='h-full px-3 py-4 overflow-y-auto bg-neutral-800'>
-                    <Link
-                        to={'https://www.nitronodes.xyz'}
+                    <a
+                        href={'https://www.nitronodes.xyz'}
                         className='flex items-center pl-2.5 mb-5 hover:opacity-75 duration-75'
                     >
                         <img
@@ -35,7 +35,7 @@ export default () => {
                         <span className='self-center text-xl font-semibold whitespace-nowrap text-white ml-2'>
                             NitroNodes
                         </span>
-                    </Link>
+                    </a>
                     <ul className='space-y-2 font-medium'>
                         <li>
                             <a
@@ -43,7 +43,7 @@ export default () => {
                                     setVisible(true);
                                 }}
                                 className={
-                                    'navigation-link flex items-center p-2 rounded-lg text-white hover:bg-neutral-700'
+                                    'navigation-link flex items-center p-2 rounded-lg text-white hover:bg-neutral-700 cursor-pointer'
                                 }
                             >
                                 <FontAwesomeIcon icon={faSearch} />
@@ -106,7 +106,7 @@ export default () => {
                                 href='#'
                                 onClick={onTriggerLogout}
                                 className={
-                                    'navigation-link absolute w-full bottom-4 p-2 rounded-lg text-white hover:bg-neutral-700'
+                                    'navigation-link absolute w-[60%] bottom-4 p-2 rounded-lg text-white hover:bg-neutral-700'
                                 }
                             >
                                 <FontAwesomeIcon icon={faSignOutAlt} />
