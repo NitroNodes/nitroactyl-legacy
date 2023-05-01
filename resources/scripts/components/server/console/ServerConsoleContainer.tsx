@@ -22,6 +22,10 @@ function ServerConsoleContainer() {
     const eggFeatures = ServerContext.useStoreState(state => state.server.data!.eggFeatures, isEqual);
     const isNodeUnderMaintenance = ServerContext.useStoreState(state => state.server.data!.isNodeUnderMaintenance);
 
+    if (new URLSearchParams(window.location.search).get('popup')) {
+        return <Console popup={true} />;
+    }
+
     return (
         <ServerContentBlock title={'Console'}>
             {(isNodeUnderMaintenance || isInstalling || isTransferring) && (
@@ -47,7 +51,7 @@ function ServerConsoleContainer() {
             <div className={'mb-4 grid grid-cols-4 gap-2 sm:gap-4'}>
                 <div className={'col-span-4 flex lg:col-span-3'}>
                     <Spinner.Suspense>
-                        <Console />
+                        <Console popup={false} />
                     </Spinner.Suspense>
                 </div>
                 <ServerDetailsBlock className={'order-last col-span-4 lg:order-none lg:col-span-1'} />
