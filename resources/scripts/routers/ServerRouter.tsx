@@ -1,7 +1,7 @@
 import TransferListener from '@/components/server/TransferListener';
 import React, { useEffect, useState } from 'react';
 import { NavLink, Route, Switch, useRouteMatch } from 'react-router-dom';
-import NavigationBar from '@/components/MobileNavigation';
+import MobileNavigation from '@/components/MobileNavigation';
 import TransitionRouter from '@/TransitionRouter';
 import WebsocketHandler from '@/components/server/WebsocketHandler';
 import { ServerContext } from '@/state/server';
@@ -20,11 +20,15 @@ import { useLocation } from 'react-router';
 import ConflictStateRenderer from '@/components/server/ConflictStateRenderer';
 import PermissionRoute from '@/components/elements/PermissionRoute';
 import routes from '@/routers/routes';
+import useWindowDimensions from '@/plugins/useWindowDimensions';
+import SidePanel from '@/components/SidePanel';
+import ProgressBar from '@/components/elements/ProgressBar';
+import tw from 'twin.macro';
 
 export default () => {
     const match = useRouteMatch<{ id: string }>();
     const location = useLocation();
-
+    const { width } = useWindowDimensions();
     const rootAdmin = useStoreState((state) => state.user.data!.rootAdmin);
     const [error, setError] = useState('');
 
@@ -64,7 +68,8 @@ export default () => {
 
     return (
         <React.Fragment key={'server-router'}>
-            <NavigationBar />
+            <ProgressBar css={tw`absolute top-0 z-[101]`} />
+            {width >= 1800 ? <SidePanel /> : <MobileNavigation />}
             {!uuid || !id ? (
                 error ? (
                     <ServerError message={error} />

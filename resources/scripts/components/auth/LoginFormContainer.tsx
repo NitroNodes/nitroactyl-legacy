@@ -30,6 +30,12 @@ const Container = styled.div`
 
 export default forwardRef<HTMLFormElement, Props>(({ title, ...props }, ref) => (
     <Container>
+        <a href='https://www.nitronodes.xyz'>
+            <img
+                src={'https://www.nitronodes.xyz/assets/img/logo.png'}
+                css={tw`w-32 mx-auto hover:opacity-75 duration-75 mb-4`}
+            />
+        </a>
         {title && <h2 css={tw`text-3xl text-center text-neutral-100 font-medium py-6`}>{title}</h2>}
         <FlashMessageRender css={tw`mb-2 px-1`} />
         <Form {...props} ref={ref}>

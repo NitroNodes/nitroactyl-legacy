@@ -79,6 +79,7 @@ export default () => {
                         description={
                             'Enter your account email address to receive instructions on resetting your password.'
                         }
+                        css={tw`text-neutral-800`}
                         name={'email'}
                         type={'email'}
                     />

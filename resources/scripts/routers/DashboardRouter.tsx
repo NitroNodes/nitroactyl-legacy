@@ -10,6 +10,8 @@ import routes from '@/routers/routes';
 import SidePanel from '@/components/SidePanel';
 import MobileNavigation from '@/components/MobileNavigation';
 import useWindowDimensions from '@/plugins/useWindowDimensions';
+import ProgressBar from '@/components/elements/ProgressBar';
+import tw from 'twin.macro';
 
 export default () => {
     const location = useLocation();
@@ -17,7 +19,8 @@ export default () => {
 
     return (
         <>
-            {width >= 1280 ? <SidePanel /> : <MobileNavigation />}
+            <ProgressBar css={tw`absolute top-0 z-[101]`} />
+            {width >= 1800 ? <SidePanel /> : <MobileNavigation />}
             {location.pathname.startsWith('/account') && (
                 <SubNavigation>
                     <div>

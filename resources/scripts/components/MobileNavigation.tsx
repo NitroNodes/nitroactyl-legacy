@@ -44,12 +44,12 @@ export default () => {
     };
 
     return (
-        <div className={'w-full bg-neutral-900 shadow-md overflow-x-auto overflow-y-hidden'}>
+        <div className={'w-full bg-neutral-800 shadow-md overflow-x-auto overflow-y-hidden'}>
             <SpinnerOverlay visible={isLoggingOut} />
             <div className={'mx-auto w-full flex items-center h-[3.5rem] max-w-[1200px]'}>
                 <div id={'logo'} className={'flex-1'}>
                     <Link
-                        to={'/'}
+                        to={'https://www.nitronodes.xyz'}
                         className={
                             'text-2xl font-header px-4 no-underline text-neutral-200 hover:text-neutral-100 transition-colors duration-150'
                         }

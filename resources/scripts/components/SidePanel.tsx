@@ -1,18 +1,15 @@
-import React from 'react';
-import tw from 'twin.macro';
+import React, { useState } from 'react';
 import http from '@/api/http';
 
 import { useStoreState } from 'easy-peasy';
-import styled from 'styled-components/macro';
-import { NavLink, Link } from 'react-router-dom';
-import ProgressBar from '@/components/elements/ProgressBar';
-import Tooltip from '@/components/elements/tooltip/Tooltip';
-import SearchContainer from '@/components/dashboard/search/SearchContainer';
-import { faCogs, faServer, faShoppingCart, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Link, NavLink } from 'react-router-dom';
+import { faCogs, faSearch, faServer, faShoppingCart, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import SearchModal from '@/components/dashboard/search/SearchModal';
 
 export default () => {
     const rootAdmin = useStoreState((state) => state.user.data!.rootAdmin);
+    const [visible, setVisible] = useState(false);
 
     const onTriggerLogout = () => {
         http.post('/auth/logout').finally(() => {
@@ -21,78 +18,104 @@ export default () => {
         });
     };
 
-    const PanelDiv = styled.div`
-        ${tw`h-screen sticky bg-neutral-800 flex flex-col w-20 fixed top-0`};
-
-        & > div {
-            ${tw`mx-auto`};
-
-            & > a,
-            & > div {
-                &:hover {
-                    ${tw`text-neutral-100`};
-                }
-
-                &:active,
-                &.active {
-                    ${tw`text-green-600`};
-                }
-            }
-        }
-    `;
-
     return (
-        <PanelDiv>
-            <ProgressBar />
-            <Link to={'/'}>
-                <img className={'p-2'} src={'https://www.nitronodes.xyz/assets/img/logo.png'} />
-            </Link>
-            <div>
-                <div className={'navigation-link'}>
-                    <div className={'bg-gray-700 rounded-lg p-2 my-8'}>
-                        <SearchContainer />
-                    </div>
-                </div>
-                <NavLink to={'/'} className={'navigation-link'} exact>
-                    <Tooltip placement={'bottom'} content={'Servers'}>
-                        <div className={'bg-gray-700 rounded-lg p-2 my-8'}>
-                            <FontAwesomeIcon icon={faServer} />
-                        </div>
-                    </Tooltip>
-                </NavLink>
-                <NavLink to={'/account'} className={'navigation-link'}>
-                    <Tooltip placement={'bottom'} content={'Account'}>
-                        <div className={'bg-gray-700 rounded-lg p-2 my-8'}>
-                            <FontAwesomeIcon icon={faUser} />
-                        </div>
-                    </Tooltip>
-                </NavLink>
-                <NavLink to={'/store'} className={'navigation-link'}>
-                    <Tooltip placement={'bottom'} content={'Store'}>
-                        <div className={'bg-gray-700 rounded-lg p-2 my-8'}>
-                            <FontAwesomeIcon icon={faShoppingCart} />
-                        </div>
-                    </Tooltip>
-                </NavLink>
-                {rootAdmin && (
-                    <a href={'/admin'} className={'navigation-link'}>
-                        <Tooltip placement={'bottom'} content={'Admin'}>
-                            <div className={'bg-gray-700 rounded-lg p-2 my-8'}>
-                                <FontAwesomeIcon icon={faCogs} />
-                            </div>
-                        </Tooltip>
-                    </a>
-                )}
-                <div id={'logo'}>
-                    <button onClick={onTriggerLogout} className={'navigation-link'}>
-                        <Tooltip placement={'bottom'} content={'Logout'}>
-                            <div className={'flex flex-row fixed bottom-0 mb-8 bg-gray-700 rounded-lg p-2'}>
+        <>
+            {visible && <SearchModal appear visible={visible} onDismissed={() => setVisible(false)} />}
+            <div className='fixed top-0 left-0 z-[100] w-52 h-screen' aria-label='Sidebar'>
+                <div className='h-full px-3 py-4 overflow-y-auto bg-neutral-800'>
+                    <Link
+                        to={'https://www.nitronodes.xyz'}
+                        className='flex items-center pl-2.5 mb-5 hover:opacity-75 duration-75'
+                    >
+                        <img
+                            src='https://www.nitronodes.xyz/assets/img/logo.png'
+                            className='h-6 mr-3 sm:h-7'
+                            alt='NitroNodes Logo'
+                        />
+                        <span className='self-center text-xl font-semibold whitespace-nowrap text-white ml-2'>
+                            NitroNodes
+                        </span>
+                    </Link>
+                    <ul className='space-y-2 font-medium'>
+                        <li>
+                            <a
+                                onClick={() => {
+                                    setVisible(true);
+                                }}
+                                className={
+                                    'navigation-link flex items-center p-2 rounded-lg text-white hover:bg-neutral-700'
+                                }
+                            >
+                                <FontAwesomeIcon icon={faSearch} />
+                                <span className='ml-3'>Search</span>
+                            </a>
+                        </li>
+                        <li>
+                            <NavLink
+                                to={'/'}
+                                exact
+                                className={
+                                    'navigation-link flex items-center p-2 rounded-lg text-white hover:bg-neutral-700'
+                                }
+                                activeClassName='text-primary-400'
+                            >
+                                <FontAwesomeIcon icon={faServer} />
+                                <span className='ml-3'>Servers</span>
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink
+                                to={'/store'}
+                                className={
+                                    'navigation-link flex items-center p-2 rounded-lg text-white hover:bg-neutral-700'
+                                }
+                                activeClassName='text-primary-400'
+                            >
+                                <FontAwesomeIcon icon={faShoppingCart} />
+                                <span className='ml-3'>Store</span>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to={'/account'}
+                                className={
+                                    'navigation-link flex items-center p-2 rounded-lg text-white hover:bg-neutral-700'
+                                }
+                                activeClassName='text-primary-400'
+                            >
+                                <FontAwesomeIcon icon={faUser} />
+                                <span className='ml-3'>Account</span>
+                            </NavLink>
+                        </li>
+                        {rootAdmin && (
+                            <li>
+                                <a
+                                    href={'/admin'}
+                                    className={
+                                        'navigation-link flex items-center p-2 rounded-lg text-white hover:bg-neutral-700'
+                                    }
+                                >
+                                    <FontAwesomeIcon icon={faCogs} />
+                                    <span className='ml-3'>Admin</span>
+                                </a>
+                            </li>
+                        )}
+                        <li>
+                            <a
+                                href='#'
+                                onClick={onTriggerLogout}
+                                className={
+                                    'navigation-link absolute w-full bottom-4 p-2 rounded-lg text-white hover:bg-neutral-700'
+                                }
+                            >
                                 <FontAwesomeIcon icon={faSignOutAlt} />
-                            </div>
-                        </Tooltip>
-                    </button>
+                                <span className='ml-3'>Log out</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </PanelDiv>
+        </>
     );
 };
