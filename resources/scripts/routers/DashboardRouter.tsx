@@ -10,15 +10,12 @@ import routes from '@/routers/routes';
 import SidePanel from '@/components/SidePanel';
 import MobileNavigation from '@/components/MobileNavigation';
 import useWindowDimensions from '@/plugins/useWindowDimensions';
-import ProgressBar from '@/components/elements/ProgressBar';
 
 export default () => {
     const location = useLocation();
     const { width } = useWindowDimensions();
-
     return (
         <>
-            <ProgressBar />
             {width >= 1800 ? <SidePanel /> : <MobileNavigation />}
             {location.pathname.startsWith('/account') && (
                 <SubNavigation>

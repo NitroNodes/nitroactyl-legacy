@@ -18,7 +18,6 @@ ChartJS.register(LineElement, PointElement, Filler, LinearScale);
 
 const options: ChartOptions<'line'> = {
     responsive: true,
-    animation: false,
     plugins: {
         legend: { display: false },
         title: { display: false },
@@ -27,6 +26,7 @@ const options: ChartOptions<'line'> = {
     layout: {
         padding: 0,
     },
+    animation: false,
     scales: {
         x: {
             min: 0,

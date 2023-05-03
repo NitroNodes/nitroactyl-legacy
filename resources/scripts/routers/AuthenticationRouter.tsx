@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import LoginContainer from '@/components/auth/LoginContainer';
 import RegisterContainer from '@/components/auth/RegisterContainer';
 import ForgotPasswordContainer from '@/components/auth/ForgotPasswordContainer';
@@ -11,20 +11,17 @@ import { useHistory, useLocation } from 'react-router';
 export default () => {
     const history = useHistory();
     const location = useLocation();
-    const { path } = useRouteMatch();
 
     return (
         <div className={'pt-8 xl:pt-32'}>
             <Switch location={location}>
-                <Route path={`${path}/login`} component={LoginContainer} exact />
-                <Route path={`${path}/register`} component={RegisterContainer} exact />
-                <Route path={`${path}/login/checkpoint`} component={LoginCheckpointContainer} />
-                <Route path={`${path}/password`} component={ForgotPasswordContainer} exact />
-                <Route path={`${path}/password/reset/:token`} component={ResetPasswordContainer} />
-                <Route path={`${path}/checkpoint`} />
-                <Route path={'*'}>
-                    <NotFound onBack={() => history.push('/auth/login')} />
-                </Route>
+                <Route path={`/auth/login`} component={LoginContainer} exact />
+                <Route path={`/auth/register`} component={RegisterContainer} exact />
+                <Route path={`/auth/login/checkpoint`} component={LoginCheckpointContainer} />
+                <Route path={`/auth/password`} component={ForgotPasswordContainer} exact />
+                <Route path={`/auth/password/reset/:token`} component={ResetPasswordContainer} />
+                <Route path={`/auth/checkpoint`} />
+                <Route path='*' element={<NotFound onBack={() => history.push('/')} />} />
             </Switch>
         </div>
     );

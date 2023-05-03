@@ -22,7 +22,6 @@ import PermissionRoute from '@/components/elements/PermissionRoute';
 import routes from '@/routers/routes';
 import useWindowDimensions from '@/plugins/useWindowDimensions';
 import SidePanel from '@/components/SidePanel';
-import ProgressBar from '@/components/elements/ProgressBar';
 
 export default () => {
     const match = useRouteMatch<{ id: string }>();
@@ -67,7 +66,6 @@ export default () => {
 
     return (
         <React.Fragment key={'server-router'}>
-            <ProgressBar />
             {width >= 1800 ? <SidePanel /> : <MobileNavigation />}
             {!uuid || !id ? (
                 error ? (

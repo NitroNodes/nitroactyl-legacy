@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCogs, faPlus, faServer, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useStoreState } from 'easy-peasy';
@@ -11,7 +11,7 @@ import styled from 'styled-components/macro';
 import http from '@/api/http';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
 import Tooltip from '@/components/elements/tooltip/Tooltip';
-
+import logo from '@/assets/images/logo.png';
 const RightNavigation = styled.div`
     & > a,
     & > button,
@@ -48,17 +48,14 @@ export default () => {
             <SpinnerOverlay visible={isLoggingOut} />
             <div className={'mx-auto w-full flex items-center h-[3.5rem] max-w-[1200px]'}>
                 <div id={'logo'} className={'flex-1'}>
-                    <a
-                        href={'https://www.nitronodes.xyz'}
+                    <Link
+                        to={'/'}
                         className={
                             'text-2xl font-header px-4 no-underline text-neutral-200 hover:text-neutral-100 transition-colors duration-150'
                         }
                     >
-                        <img
-                            src={'https://www.nitronodes.xyz/assets/img/logo.png'}
-                            css={tw`w-10 ml-2 hover:opacity-75 duration-75`}
-                        />
-                    </a>
+                        <img src={logo} css={tw`w-10 ml-2 hover:opacity-75 duration-75`} />
+                    </Link>
                 </div>
                 <RightNavigation className={'flex h-full items-center justify-center'}>
                     <SearchContainer />

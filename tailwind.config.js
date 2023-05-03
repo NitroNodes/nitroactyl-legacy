@@ -8,7 +8,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                header: ["Clear Sans", "Roboto"],
+                header: ['"Clear Sans"', '"Roboto"', 'system-ui', 'sans-serif'],
             },
             colors: {
                 black: '#131a20',

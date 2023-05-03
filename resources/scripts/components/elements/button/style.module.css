@@ -46,15 +46,15 @@
 }
 
 .text {
-    @apply bg-gray-500 text-gray-50;
-    @apply hover:bg-gray-400 active:bg-gray-400;
+    @apply bg-gray-600 text-gray-50;
+    @apply hover:bg-gray-500 active:bg-gray-500;
 
     &.secondary {
         @apply hover:bg-gray-500 active:bg-gray-500;
     }
 
     &:disabled {
-        @apply bg-gray-500/75 text-gray-200/75;
+        @apply bg-gray-600/75 text-gray-200/75;
     }
 }
 
