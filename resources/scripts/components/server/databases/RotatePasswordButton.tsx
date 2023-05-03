@@ -26,7 +26,7 @@ export default ({ databaseId, onUpdate }: { databaseId: string; onUpdate: (datab
             .catch((error) => {
                 console.error(error);
                 addFlash({
-                    type: 'error',
+                    type: 'danger',
                     title: 'Error',
                     message: httpErrorToHuman(error),
                     key: 'database-connection-modal',

@@ -32,7 +32,7 @@ export default () => {
     return (
         <PageContentBlock title={'Account Overview'} description={'View and update account details.'}>
             {state?.twoFactorRedirect && (
-                <MessageBox title={'2-Factor Required'} type={'error'}>
+                <MessageBox title={'2-Factor Required'} type={'danger'}>
                     Your account must have two-factor authentication enabled in order to continue.
                 </MessageBox>
             )}

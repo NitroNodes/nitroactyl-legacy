@@ -14,7 +14,7 @@ import AccountSSHContainer from '@/components/dashboard/ssh/AccountSSHContainer'
 import ActivityLogContainer from '@/components/dashboard/activity/ActivityLogContainer';
 import ServerActivityLogContainer from '@/components/server/ServerActivityLogContainer';
 import StoreOverviewContainer from '@/components/store/StoreOverviewContainer';
-import StoreFundsContainer from '@/components/store/StoreFundsContainer';
+import StoreFundsContainer from '@/components/store/StoreCreditsContainer';
 import StoreDeployContainer from '@/components/store/StoreDeployContainer';
 
 // Each of the router files is already code split out appropriately — so
@@ -79,7 +79,7 @@ export default {
         },
         {
             path: '/funds',
-            name: 'Funds',
+            name: 'Credits',
             component: StoreFundsContainer,
         },
         {

@@ -1,10 +1,10 @@
 import {
+    faBolt,
     faChartBar,
-    faDollarSign,
+    faCloudUploadAlt,
     faExternalLinkAlt,
     faHdd,
     faServer,
-    faUpload,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,22 +14,21 @@ import PageContentBlock from '../elements/PageContentBlock';
 
 export default function IndexContainer() {
     return (
-        <PageContentBlock>
+        <PageContentBlock className='w-full'>
             <header className='container w-full max-w-lg px-4 py-32 mx-auto -mt-40 md:-mt-8  text-center md:max-w-none'>
                 <h1 className='text-5xl font-bold text-white sm:text-6xl md:text-7xl'>
                     <span className='block xl:inline'>Keep your projects</span>
                     <span className='block text-primary-500'>online 24/7</span>
                 </h1>
                 <p className='max-w-2xl m-auto mt-6 text-lg text-neutral-100'>
-                    NitroNodes is a powerful server hosting service. We provide paid servers, but we have a free plan
-                    which can suit your needs. We&apos;ve been providing high quality services since 18/5/2022
+                    NitroNodes is a freemium server hosting service, that has been running since 18/05/23.
                 </p>
                 <div className='md:mt-12'>
                     <Link
                         to='/auth/login'
                         className='inline-flex gap-2 px-4 py-2 mt-5 font-bold text-white rounded-md bg-primary-600 hover:bg-primary-500 duration-75 '
                     >
-                        <FontAwesomeIcon icon={faExternalLinkAlt} /> Start now
+                        <FontAwesomeIcon className='m-auto' icon={faExternalLinkAlt} /> Start now
                     </Link>
                     <br />
                     <br />
@@ -60,9 +59,7 @@ export default function IndexContainer() {
                         <br className='md:visible' />
                         <br className='md:visible' />
                         <h2 className='text-5xl  font-bold tracking-tight text-center'>Why us?</h2>
-                        <p className='mt-2 text-2xl text-center text-neutral-100'>
-                            These are the reasons why you should choose us
-                        </p>
+                        <p className='mt-2 text-2xl text-center text-neutral-100'>These are the</p>
                         <div className='grid grid-cols-1 sm:grid-cols-3 gap-10 my-12 sm:my-16'>
                             <div className='flex flex-col items-center justify-between  px-4 py-12 space-y-4 duration-300 border rounded-lg shadow-lg border-neutral-800 bg-neutral-800  hover:scale-105 md:hover:-translate-y-3'>
                                 <div className='flex w-12 h-12 text-center text-white rounded-lg bg-primary-500'>
@@ -70,27 +67,27 @@ export default function IndexContainer() {
                                 </div>
                                 <p className='font-bold text-white text-md'>99% Uptime</p>
                                 <p className='text-base text-center text-neutral-300'>
-                                    We provide 24/7 hosting without lag, all of this for{' '}
-                                    <span className='font-bold text-primary-300'>free</span>
+                                    Uptime has always been our priority, when there&apos;s a planned downtime we notify
+                                    you at least 1 hour before the maintenance!
                                 </p>
                             </div>
 
                             <div className='flex flex-col items-center justify-between  px-4 py-12 space-y-4 duration-300 border rounded-lg shadow-lg border-neutral-800 bg-neutral-800 hover:scale-105 md:hover:-translate-y-3'>
                                 <div className='flex w-12 h-12 text-center text-white rounded-lg bg-primary-500'>
-                                    <FontAwesomeIcon icon={faDollarSign} className='m-auto' />
+                                    <FontAwesomeIcon icon={faBolt} className='m-auto' />
                                 </div>
-                                <p className='font-bold text-white text-md'>Free Plan</p>
+                                <p className='font-bold text-white text-md'>DDoS Protection</p>
                                 <p className='text-base text-center text-neutral-300'>
-                                    Our <span className='font-bold text-primary-300'>free plan</span> contains 1gb of
-                                    shared ram, 5gb of storage space and 1 thread.
+                                    We use <span className='font-bold text-primary-300'>path.net</span> ddos protection,
+                                    which can handle a 12Tbps attack!{' '}
                                 </p>
                             </div>
 
                             <div className='flex flex-col items-center justify-between  px-4 py-12 space-y-4 duration-300 border rounded-lg shadow-lg border-neutral-800 bg-neutral-800 hover:scale-105 md:hover:-translate-y-3'>
                                 <div className='flex w-12 h-12 text-center text-white rounded-lg bg-primary-500'>
-                                    <FontAwesomeIcon icon={faUpload} className='m-auto' />
+                                    <FontAwesomeIcon icon={faCloudUploadAlt} className='m-auto' />
                                 </div>
-                                <p className='font-bold text-white text-md'>One click server creation</p>
+                                <p className='font-bold text-white text-md'>Easy deployment.</p>
                                 <p className='text-base text-center text-neutral-300'>
                                     With our large amount of eggs, deployment is very&nbsp;
                                     <span className='font-bold text-primary-300'>easy</span>.
@@ -101,13 +98,13 @@ export default function IndexContainer() {
                 </section>
                 <section className='px-10 mx-auto mt-16 max-w-7xl sm:text-center'>
                     <h2 className='text-5xl font-bold tracking-tight text-center sm:text-5xl'>Statistics</h2>
-                    <p className='mt-2 text-2xl text-center text-neutral-100'>How many people trust us</p>
+                    <p className='mt-2 text-2xl text-center text-neutral-100'></p>
                     <div className='grid grid-cols-1 sm:grid-cols-3 gap-10 my-12 sm:my-16'>
                         <div className='flex flex-col items-center justify-center py-10 duration-300 border rounded-lg shadow-lg border-neutral-800 bg-neutral-800  hover:scale-105 md:hover:-translate-y-3'>
                             <div className='flex w-12 h-12 text-center text-white rounded-lg bg-primary-500'>
                                 <FontAwesomeIcon icon={faUser} className='m-auto' />
                             </div>
-                            <p className='mt-4 font-bold text-white'>Users</p>
+                            <p className='mt-4 font-bold text-white'>Accounts</p>
                             <p className='mt-2 text-md text-neutral-300'>300+</p>
                         </div>
                         <div className='flex flex-col items-center justify-center py-10 duration-300 border rounded-lg shadow-lg border-neutral-800 bg-neutral-800  hover:scale-105 md:hover:-translate-y-3'>
@@ -132,7 +129,7 @@ export default function IndexContainer() {
                             Supported Software
                         </h2>
                         <p className='mt-2 text-2xl text-center text-neutral-100'>
-                            Deploy your favourite programming languages/software
+                            With our wide range of supported software you can host almost anything game/bot related.
                         </p>
                         <div className='grid grid-cols-1 sm:grid-cols-1 gap-10 my-12 sm:my-16'>
                             <div className='flex flex-col items-center justify-center py-10 duration-300 border rounded-lg shadow-lg border-neutral-800 bg-neutral-800  hover:scale-105 md:hover:-translate-y-3'>
@@ -144,7 +141,7 @@ export default function IndexContainer() {
                                     alt={'python'}
                                 />
                                 <p className='mt-4 font-bold'>Python</p>
-                                <p className='mt-2 text-sm text-neutral-300'>Host your bots/websites</p>
+                                <p className='mt-2 text-sm text-neutral-300'>Hos</p>
                             </div>
                             <div className='flex flex-col items-center justify-center py-10 duration-300 border rounded-lg shadow-lg border-neutral-800 bg-neutral-800  hover:scale-105 md:hover:-translate-y-3'>
                                 <img height={64} width={64} src='/assets/img/java.png' alt='java' />

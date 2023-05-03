@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-@import 'checkbox.css';
+
 
 .login-page {
     background: #10529f;
@@ -878,3 +878,6 @@ pre {
     background-color: #515f6cbb;
     border-color: #1f2933;
 }
+
+@import 'checkbox.css';
+@import 'nitroactyl.css';

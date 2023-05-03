@@ -10,6 +10,7 @@ import routes from '@/routers/routes';
 import SidePanel from '@/components/SidePanel';
 import MobileNavigation from '@/components/MobileNavigation';
 import useWindowDimensions from '@/plugins/useWindowDimensions';
+import IndexContainer from '@/components/landing/IndexContainer';
 
 export default () => {
     const location = useLocation();
@@ -30,6 +31,7 @@ export default () => {
                     </div>
                 </SubNavigation>
             )}
+
             {location.pathname.startsWith('/store') && (
                 <SubNavigation>
                     <div>
@@ -48,6 +50,9 @@ export default () => {
                     <Switch location={location}>
                         <Route path={'/'} exact>
                             <DashboardContainer />
+                        </Route>
+                        <Route path={'/test'} exact>
+                            <IndexContainer />
                         </Route>
                         {routes.account.map(({ path, component: Component }) => (
                             <Route key={path} path={`/account/${path}`.replace('//', '/')} exact>
