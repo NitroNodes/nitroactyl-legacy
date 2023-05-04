@@ -1,6 +1,6 @@
 # Nitroactyl Panel
 
-Nitroactyl is fork of the pterodactyl gamepanel. Nitroactyl is built for NitroNodes, no support will be provided for self hosters.
+Nitroactyl is fork of the pterodactyl which contains some feature of the jexactyl gamepanel and adds Monthly Billing. Nitroactyl is built for NitroNodes, no support will be provided for self hosters.
 
 ## License
 

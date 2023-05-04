@@ -14,6 +14,7 @@ import isEqual from 'react-fast-compare';
 import CopyOnClick from '@/components/elements/CopyOnClick';
 import { ip } from '@/lib/formatters';
 import { Button } from '@/components/elements/button/index';
+import DeleteServerBox from './DeleteServerBox';
 
 export default () => {
     const username = useStoreState((state) => state.user.data!.username);
@@ -69,6 +70,7 @@ export default () => {
                             </div>
                         </CopyOnClick>
                     </TitledGreyBox>
+                    <DeleteServerBox />
                 </div>
                 <div css={tw`w-full mt-6 md:flex-1 md:mt-0`}>
                     <Can action={'settings.rename'}>

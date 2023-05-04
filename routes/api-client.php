@@ -64,6 +64,8 @@ Route::group([
     Route::get('/resources', Client\Servers\ResourceUtilizationController::class)->name('api:client:server.resources');
     Route::get('/activity', Client\Servers\ActivityLogController::class)->name('api:client:server.activity');
 
+    Route::post('/delete', [Client\Servers\ServerController::class, 'delete'])->name('api:client:server.delete');
+
     Route::post('/command', [Client\Servers\CommandController::class, 'index']);
     Route::post('/power', [Client\Servers\PowerController::class, 'index']);
 
