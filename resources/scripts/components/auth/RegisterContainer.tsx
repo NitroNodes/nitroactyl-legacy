@@ -52,6 +52,7 @@ const RegisterContainer = ({ history }: RouteComponentProps) => {
                     addFlash({
                         key: 'auth:register',
                         type: 'success',
+                        title: 'success',
                         message: 'Account has been successfully created.',
                     });
                     return;

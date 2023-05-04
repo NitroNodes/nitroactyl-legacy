@@ -23,6 +23,7 @@ import { FileActionCheckbox } from '@/components/server/files/SelectFileCheckbox
 import { hashToPath } from '@/helpers';
 import style from './style.module.css';
 import Input from '@/components/elements/Input';
+import PullFileButton from './PullFileButton';
 
 const sortFiles = (files: FileObject[], searchString: string): FileObject[] => {
     const sortedFiles: FileObject[] = files
@@ -87,18 +88,16 @@ export default () => {
                             />
                         }
                     />
-                    <Input
-                        onChange={searchFiles}
-                        css={tw`md:mx-6 w-full px-4 mb-4 md:mb-0`}
-                        placeholder='Search'
-                    ></Input>
+                    <Input onChange={searchFiles} css={tw`md:mx-6 w-full px-4 mb-4 md:mb-0`} placeholder='Search' />
+
                     <Can action={'file.create'}>
                         <div className={style.manager_actions}>
                             <FileManagerStatus />
                             <NewDirectoryButton css={tw`whitespace-nowrap`} />
                             <UploadButton />
+                            <PullFileButton css={tw`whitespace-nowrap`} />
                             <NavLink to={`/server/${id}/files/new${window.location.hash}`}>
-                                <Button css={tw`whitespace-nowrap h-full`}>New File</Button>
+                                <Button css={tw`whitespace-nowrap h-full w-full`}>New File</Button>
                             </NavLink>
                         </div>
                     </Can>

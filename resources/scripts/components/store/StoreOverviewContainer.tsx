@@ -42,6 +42,7 @@ export default function OverviewContainer() {
                 addFlash({
                     key: 'store-overview',
                     type: 'success',
+                    title: 'success',
                     message: 'Your server has been successfully deleted.',
                 });
                 // @ts-expect-error this is valid
@@ -52,6 +53,7 @@ export default function OverviewContainer() {
                 addFlash({
                     key: 'store-overview',
                     type: 'danger',
+                    title: 'error',
                     message: 'An error occured while deleting your server!',
                 });
             });
