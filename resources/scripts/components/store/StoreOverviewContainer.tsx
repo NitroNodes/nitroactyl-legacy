@@ -111,7 +111,6 @@ export default function OverviewContainer() {
                     </Button>
                 </Dialog>
             </form>
-
             <div className={'text-center w-full h-46'}>
                 <p className={'text-3xl mt-4 text-gray-200 text-left px-4'}>Your servers</p>
                 {!servers ? (

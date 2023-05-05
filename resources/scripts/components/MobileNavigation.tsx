@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCogs, faPlus, faServer, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCogs, faPlus, faLayerGroup, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useStoreState } from 'easy-peasy';
 import { ApplicationStore } from '@/state';
 import SearchContainer from '@/components/dashboard/search/SearchContainer';
@@ -61,7 +61,7 @@ export default () => {
                     <SearchContainer />
                     <Tooltip placement={'bottom'} content={'Server List'}>
                         <NavLink to={'/'} exact>
-                            <FontAwesomeIcon icon={faServer} />
+                            <FontAwesomeIcon icon={faLayerGroup} />
                         </NavLink>
                     </Tooltip>
                     <Tooltip placement={'bottom'} content={'Store'}>

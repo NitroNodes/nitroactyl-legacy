@@ -3,7 +3,7 @@ import http from '@/api/http';
 
 import { useStoreState } from 'easy-peasy';
 import { Link, NavLink } from 'react-router-dom';
-import { faCogs, faPlus, faSearch, faServer, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCogs, faLayerGroup, faPlus, faSearch, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SearchModal from '@/components/dashboard/search/SearchModal';
 import logo from '@/assets/images/logo.png';
@@ -51,7 +51,7 @@ export default () => {
                                 className={'flex items-center p-2 text-white hover:text-primary-400 duration-75 w-full'}
                                 activeClassName='text-primary-400'
                             >
-                                <FontAwesomeIcon fixedWidth={true} icon={faServer} />
+                                <FontAwesomeIcon fixedWidth={true} icon={faLayerGroup} />
                                 <span className='ml-3'>Servers</span>
                             </NavLink>
                         </li>

@@ -21,7 +21,7 @@ import ConflictStateRenderer from '@/components/server/ConflictStateRenderer';
 import PermissionRoute from '@/components/elements/PermissionRoute';
 import routes from '@/routers/routes';
 import useWindowDimensions from '@/plugins/useWindowDimensions';
-import SidePanel from '@/components/SidePanel';
+import SidePanel from '@/components/SideBar';
 
 export default () => {
     const match = useRouteMatch<{ id: string }>();

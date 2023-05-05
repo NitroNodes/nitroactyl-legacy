@@ -7,7 +7,7 @@ import SubNavigation from '@/components/elements/SubNavigation';
 import { useLocation } from 'react-router';
 import Spinner from '@/components/elements/Spinner';
 import routes from '@/routers/routes';
-import SidePanel from '@/components/SidePanel';
+import SidePanel from '@/components/SideBar';
 import MobileNavigation from '@/components/MobileNavigation';
 import useWindowDimensions from '@/plugins/useWindowDimensions';
 
