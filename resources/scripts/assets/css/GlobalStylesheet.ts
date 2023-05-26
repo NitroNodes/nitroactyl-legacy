@@ -63,5 +63,5 @@ export default createGlobalStyle`
 
     ::-webkit-scrollbar-corner {
         background: transparent;
-    }
+    } 
 `;

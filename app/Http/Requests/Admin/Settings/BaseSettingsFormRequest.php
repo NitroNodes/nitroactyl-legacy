@@ -16,15 +16,17 @@ class BaseSettingsFormRequest extends AdminFormRequest
             'app:name' => 'required|string|max:191',
             'pterodactyl:auth:2fa_required' => 'required|integer|in:0,1,2',
             'app:locale' => ['required', 'string', Rule::in(array_keys($this->getAvailableLanguages()))],
+            'app:logo' => 'string|max:191'
         ];
     }
 
     public function attributes(): array
     {
         return [
-            'app:name' => 'Company Name',
+            'app:name' => 'Panel Name',
             'pterodactyl:auth:2fa_required' => 'Require 2-Factor Authentication',
             'app:locale' => 'Default Language',
+            'app:logo' => 'Panel logo',
         ];
     }
 }

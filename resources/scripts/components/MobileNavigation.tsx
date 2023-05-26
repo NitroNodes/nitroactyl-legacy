@@ -11,7 +11,7 @@ import styled from 'styled-components/macro';
 import http from '@/api/http';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
 import Tooltip from '@/components/elements/tooltip/Tooltip';
-import logo from '@/assets/images/logo.png';
+import defaultLogo from '@/assets/images/logo.png';
 const RightNavigation = styled.div`
     & > a,
     & > button,
@@ -35,6 +35,8 @@ export default () => {
     const rootAdmin = useStoreState((state: ApplicationStore) => state.user.data!.rootAdmin);
     const [isLoggingOut, setIsLoggingOut] = useState(false);
 
+    const logo = useStoreState((state: ApplicationStore) => state.settings.data!.logo);
+
     const onTriggerLogout = () => {
         setIsLoggingOut(true);
         http.post('/auth/logout').finally(() => {
@@ -46,7 +48,7 @@ export default () => {
     return (
         <div className={'w-full bg-neutral-800 shadow-md overflow-x-auto overflow-y-hidden'}>
             <SpinnerOverlay visible={isLoggingOut} />
-            <div className={'mx-auto w-full flex items-center h-[3.5rem] max-w-[1200px]'}>
+            <div className={'mx-auto w-full flex items-center h-[4.0rem] max-w-[1200px]'}>
                 <div id={'logo'} className={'flex-1'}>
                     <Link
                         to={'/'}
@@ -54,7 +56,14 @@ export default () => {
                             'text-2xl font-header px-4 no-underline text-neutral-200 hover:text-neutral-100 transition-colors duration-150'
                         }
                     >
-                        <img src={logo} css={tw`w-10 ml-2 hover:opacity-75 duration-75`} />
+                        <img
+                            src={logo}
+                            onError={({ currentTarget }) => {
+                                currentTarget.onerror = null;
+                                currentTarget.src = defaultLogo;
+                            }}
+                            css={tw`w-10 ml-2 hover:opacity-75 duration-75`}
+                        />
                     </Link>
                 </div>
                 <RightNavigation className={'flex h-full items-center justify-center'}>

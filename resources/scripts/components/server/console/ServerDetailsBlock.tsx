@@ -6,6 +6,7 @@ import {
     faHdd,
     faMemory,
     faMicrochip,
+    faScroll,
     faWifi,
 } from '@fortawesome/free-solid-svg-icons';
 import { bytesToString, ip, mbToBytes } from '@/lib/formatters';
@@ -16,6 +17,7 @@ import StatBlock from '@/components/server/console/StatBlock';
 import useWebsocketEvent from '@/plugins/useWebsocketEvent';
 import classNames from 'classnames';
 import { capitalize } from '@/lib/strings';
+import ShareContainer from './ShareContainer';
 
 type Stats = Record<'memory' | 'cpu' | 'disk' | 'uptime' | 'rx' | 'tx', number>;
 
@@ -132,6 +134,9 @@ const ServerDetailsBlock = ({ className }: { className?: string }) => {
             </StatBlock>
             <StatBlock icon={faCloudUploadAlt} title={'Network (Outbound)'}>
                 {status === 'offline' ? <span className={'text-gray-400'}>Offline</span> : bytesToString(stats.tx)}
+            </StatBlock>
+            <StatBlock icon={faScroll} title={'Save Console Logs'}>
+                <ShareContainer />
             </StatBlock>
         </div>
     );

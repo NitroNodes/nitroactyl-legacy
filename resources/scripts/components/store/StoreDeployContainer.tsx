@@ -23,6 +23,10 @@ export default function DeployContainer() {
     const [node, setNode] = useState<number>(0);
     const [nodes, setNodes] = useState<Node[]>();
 
+    const changeNest = (nest: number) => {
+        console.log('Change nest!');
+    };
+
     return (
         <PageContentBlock title={'Deploy a server'} description={'Choose your plan and create your server!'}>
             <Formik
@@ -78,7 +82,7 @@ export default function DeployContainer() {
                         </TitledGreyBox>
                         <TitledGreyBox title={'Server Nest'} icon={faCube} className={'mt-8 sm:mt-0'}>
                             <Select name={'nest'} onChange={(nest) => changeNest(nest)}>
-                                {!nest && <option>Select a nest...</option>}
+                                {!nest && <option>Select an category.</option>}
                                 {nests.map((n) => (
                                     <option key={n.id} value={n.id}>
                                         {n.name}
@@ -86,12 +90,12 @@ export default function DeployContainer() {
                                 ))}
                             </Select>
                             <p className={'mt-1 text-xs text-gray-400'}>
-                                Select a nest (egg category) to use for your server.
+                                Select a nest (category) to use for your server.
                             </p>
                         </TitledGreyBox>
                         <TitledGreyBox title={'Server Egg'} icon={faEgg} className={'mt-8 sm:mt-0'}>
                             <Select name={'egg'} onChange={(e) => setEgg(parseInt(e.target.value))}>
-                                {!egg && <option>Select an egg...</option>}
+                                {!egg && <option>Select the server type.</option>}
                                 {eggs.map((e) => (
                                     <option key={e.id} value={e.id}>
                                         {e.name}

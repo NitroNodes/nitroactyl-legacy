@@ -5,7 +5,9 @@ import { breakpoint } from '@/theme';
 import FlashMessageRender from '@/components/FlashMessageRender';
 import tw from 'twin.macro';
 import { Link } from 'react-router-dom';
-import logo from '@/assets/images/logo.png';
+import defaultLogo from '@/assets/images/logo.png';
+import { ApplicationStore } from '@/state';
+import { useStoreState } from 'easy-peasy';
 
 type Props = React.DetailedHTMLProps<React.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement> & {
     title?: string;
@@ -33,7 +35,14 @@ const Container = styled.div`
 export default forwardRef<HTMLFormElement, Props>(({ title, ...props }, ref) => (
     <Container>
         <Link to={'/'}>
-            <img src={logo} css={tw`w-32 mx-auto hover:opacity-75 duration-75 mt-12 md:-mt-12`} />
+            <img
+                src={useStoreState((state: ApplicationStore) => state.settings.data!.logo)}
+                onError={({ currentTarget }) => {
+                    currentTarget.onerror = null;
+                    currentTarget.src = defaultLogo;
+                }}
+                css={tw`w-32 mx-auto hover:opacity-75 duration-75 mt-12 md:-mt-12`}
+            />
         </Link>
         {title && <h2 css={tw`text-3xl text-center text-neutral-100 font-medium py-6`}>{title}</h2>}
         <FlashMessageRender css={tw`mb-2 px-1`} />

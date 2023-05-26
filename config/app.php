@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
-
 return [
     /*
     |--------------------------------------------------------------------------
@@ -25,6 +24,17 @@ return [
 
     'name' => env('APP_NAME', 'Nitroactyl'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application Logo
+    |--------------------------------------------------------------------------
+    |
+    | Used as the Panel logo and branding which is displayed via the frontend.
+    |
+    */
+
+    'logo' => '',
+    
     /*
     |--------------------------------------------------------------------------
     | Application Environment
