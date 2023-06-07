@@ -1,6 +1,6 @@
 .button {
     @apply px-4 py-2 inline-flex items-center justify-center overflow-hidden;
-    @apply rounded font-medium text-sm text-primary-50 transition-all duration-100;
+    @apply rounded font-medium text-sm text-primary-50 transition-all duration-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-neutral-800 focus:ring-offset-2;
 
     /* Sizing Controls */
     &.small {
@@ -46,8 +46,8 @@
 }
 
 .text {
-    @apply bg-gray-500 text-gray-50;
-    @apply hover:bg-gray-500 active:bg-gray-500;
+    @apply bg-gray-700 text-gray-50;
+    @apply hover:bg-gray-700 active:bg-gray-700 focus:ring-neutral-700;
 
     &.secondary {
         @apply hover:bg-gray-500 active:bg-gray-500;
@@ -60,7 +60,7 @@
 
 .danger {
     @apply bg-red-500 text-gray-50;
-    @apply hover:bg-red-500 active:bg-red-500;
+    @apply hover:bg-red-500 active:bg-red-500 focus:ring-red-500;
 
     &.secondary {
         @apply hover:bg-red-600 active:bg-red-600;

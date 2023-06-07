@@ -40,15 +40,14 @@ const ModalContainer = styled.div<{ alignTop?: boolean }>`
 
     margin-bottom: auto;
 
-    & > .close-icon {
-        ${tw`absolute right-0 p-2 text-white cursor-pointer opacity-50 transition-all duration-150 ease-linear hover:opacity-100`};
-        top: -2.5rem;
+    .close-icon {
+        ${tw`absolute right-0 m-4 p-2 text-white cursor-pointer text-neutral-100 transition duration-150`};
 
         &:hover {
-            ${tw`transform rotate-90`}
+            ${tw`transform rotate-90 text-white`}
         }
 
-        & > svg {
+        svg {
             ${tw`w-6 h-6`};
         }
     }
@@ -102,18 +101,18 @@ const Modal: React.FC<ModalProps> = ({
             >
                 <ModalContainer alignTop={top}>
                     {isDismissable && (
-                        <div className={'close-icon'} onClick={() => setRender(false)}>
+                        <div className='close-icon' onClick={() => setRender(false)}>
                             <svg
-                                xmlns={'http://www.w3.org/2000/svg'}
-                                fill={'none'}
-                                viewBox={'0 0 24 24'}
-                                stroke={'currentColor'}
+                                xmlns='http://www.w3.org/2000/svg'
+                                fill='none'
+                                viewBox='0 0 24 24'
+                                stroke='currentColor'
                             >
                                 <path
-                                    strokeLinecap={'round'}
-                                    strokeLinejoin={'round'}
-                                    strokeWidth={'2'}
-                                    d={'M6 18L18 6M6 6l12 12'}
+                                    strokeLinecap='round'
+                                    strokeLinejoin='round'
+                                    strokeWidth={2}
+                                    d='M6 18L18 6M6 6l12 12'
                                 />
                             </svg>
                         </div>
@@ -131,7 +130,7 @@ const Modal: React.FC<ModalProps> = ({
                     <div
                         css={tw`bg-neutral-800 p-3 sm:p-4 md:p-6 rounded shadow-md overflow-y-scroll transition-all duration-150`}
                     >
-                        {children}
+                        <div className='mt-12'>{children}</div>
                     </div>
                 </ModalContainer>
             </ModalMask>

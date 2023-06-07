@@ -16,6 +16,23 @@ import ServerActivityLogContainer from '@/components/server/ServerActivityLogCon
 import StoreOverviewContainer from '@/components/store/StoreOverviewContainer';
 import StoreFundsContainer from '@/components/store/StoreCreditsContainer';
 import StoreDeployContainer from '@/components/store/StoreDeployContainer';
+import {
+    faTerminal,
+    faFolderOpen,
+    faDatabase,
+    faCalendarWeek,
+    faUsers,
+    faUpload,
+    faEthernet,
+    faPlayCircle,
+    faCogs,
+    faUser,
+    faBook,
+    faKey,
+    faCode,
+    faPlus,
+    faDollarSign,
+} from '@fortawesome/free-solid-svg-icons';
 
 // Each of the router files is already code split out appropriately — so
 // all of the items above will only be loaded in when that router is loaded.
@@ -32,10 +49,12 @@ interface RouteDefinition {
     name: string | undefined;
     component: React.ComponentType;
     exact?: boolean;
+    icon?: any;
 }
 
 interface ServerRouteDefinition extends RouteDefinition {
     permission: string | string[] | null;
+    icon: any;
 }
 
 interface Routes {
@@ -52,21 +71,25 @@ export default {
             path: '/',
             name: 'Account',
             component: AccountOverviewContainer,
+            icon: faUser,
             exact: true,
         },
         {
             path: '/api',
-            name: 'API Credentials',
+            name: 'API',
+            icon: faCode,
             component: AccountApiContainer,
         },
         {
             path: '/ssh',
             name: 'SSH Keys',
+            icon: faKey,
             component: AccountSSHContainer,
         },
         {
             path: '/activity',
             name: 'Activity',
+            icon: faBook,
             component: ActivityLogContainer,
         },
     ],
@@ -75,16 +98,19 @@ export default {
             path: '/',
             name: 'Overview',
             component: StoreOverviewContainer,
+            icon: faBook,
             exact: true,
         },
         {
             path: '/funds',
             name: 'Credits',
+            icon: faDollarSign,
             component: StoreFundsContainer,
         },
         {
             path: '/create',
             name: 'Deploy',
+            icon: faPlus,
             component: StoreDeployContainer,
         },
     ],
@@ -93,13 +119,22 @@ export default {
             path: '/',
             permission: null,
             name: 'Console',
+            icon: faTerminal,
             component: ServerConsole,
             exact: true,
+        },
+        {
+            path: '/activity',
+            permission: 'activity.*',
+            name: 'Activity',
+            icon: faBook,
+            component: ServerActivityLogContainer,
         },
         {
             path: '/files',
             permission: 'file.*',
             name: 'Files',
+            icon: faFolderOpen,
             component: FileManagerContainer,
         },
         {
@@ -112,12 +147,14 @@ export default {
             path: '/databases',
             permission: 'database.*',
             name: 'Databases',
+            icon: faDatabase,
             component: DatabasesContainer,
         },
         {
             path: '/schedules',
             permission: 'schedule.*',
             name: 'Schedules',
+            icon: faCalendarWeek,
             component: ScheduleContainer,
         },
         {
@@ -130,37 +167,36 @@ export default {
             path: '/users',
             permission: 'user.*',
             name: 'Users',
+            icon: faUsers,
             component: UsersContainer,
         },
         {
             path: '/backups',
             permission: 'backup.*',
             name: 'Backups',
+            icon: faUpload,
             component: BackupContainer,
         },
         {
             path: '/network',
             permission: 'allocation.*',
             name: 'Network',
+            icon: faEthernet,
             component: NetworkContainer,
         },
         {
             path: '/startup',
             permission: 'startup.*',
             name: 'Startup',
+            icon: faPlayCircle,
             component: StartupContainer,
         },
         {
             path: '/settings',
             permission: ['settings.*', 'file.sftp'],
             name: 'Settings',
+            icon: faCogs,
             component: SettingsContainer,
-        },
-        {
-            path: '/activity',
-            permission: 'activity.*',
-            name: 'Activity',
-            component: ServerActivityLogContainer,
         },
     ],
 } as Routes;

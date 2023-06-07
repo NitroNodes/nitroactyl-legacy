@@ -86,19 +86,19 @@ const RegisterContainer = ({ history }: RouteComponentProps) => {
             {({ isSubmitting, setSubmitting, submitForm }) => (
                 <LoginFormContainer title={'Register'} css={tw`w-full flex`}>
                     <div>
-                        <Field light type={'email'} label={'Email'} name={'email'} disabled={isSubmitting} />
+                        <Field type={'email'} label={'Email'} name={'email'} disabled={isSubmitting} />
                     </div>
                     <div css={tw`mt-6`}>
-                        <Field light type={'text'} label={'First Name'} name={'firstname'} disabled={isSubmitting} />
+                        <Field type={'text'} label={'First Name'} name={'firstname'} disabled={isSubmitting} />
                     </div>
                     <div css={tw`mt-6`}>
-                        <Field light type={'text'} label={'Last Name'} name={'lastname'} disabled={isSubmitting} />
+                        <Field type={'text'} label={'Last Name'} name={'lastname'} disabled={isSubmitting} />
                     </div>
                     <div css={tw`mt-6`}>
-                        <Field light type={'text'} label={'Username'} name={'username'} disabled={isSubmitting} />
+                        <Field type={'text'} label={'Username'} name={'username'} disabled={isSubmitting} />
                     </div>
                     <div css={tw`mt-6`}>
-                        <Field light type={'password'} label={'Password'} name={'password'} disabled={isSubmitting} />
+                        <Field type={'password'} label={'Password'} name={'password'} disabled={isSubmitting} />
                     </div>
                     <div css={tw`mt-6`}>
                         <Button type={'submit'} size={'xlarge'} isLoading={isSubmitting} disabled={isSubmitting}>
@@ -123,7 +123,7 @@ const RegisterContainer = ({ history }: RouteComponentProps) => {
                     <div css={tw`mt-4 text-center`}>
                         <Link
                             to={'/auth/login'}
-                            css={tw`ml-2 text-xs text-neutral-500 tracking-wide no-underline uppercase hover:text-neutral-600`}
+                            css={tw`ml-2 text-xs text-neutral-200 tracking-wide no-underline uppercase transition duration-150 hover:text-primary-400`}
                         >
                             Already have an account?
                         </Link>

@@ -2,7 +2,15 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCogs, faPlus, faLayerGroup, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCogs,
+    faPlus,
+    faLayerGroup,
+    faSignOutAlt,
+    faUser,
+    faQuestion,
+    faBook,
+} from '@fortawesome/free-solid-svg-icons';
 import { useStoreState } from 'easy-peasy';
 import { ApplicationStore } from '@/state';
 import SearchContainer from '@/components/dashboard/search/SearchContainer';

@@ -88,7 +88,7 @@ export default () => {
                             />
                         }
                     />
-                    <Input onChange={searchFiles} css={tw`md:mx-6 w-full px-4 mb-4 md:mb-0`} placeholder='Search' />
+                    <Input onChange={searchFiles} css={tw`md:mx-6 w-full px-2 mb-4 md:mb-0`} placeholder='Search' />
 
                     <Can action={'file.create'}>
                         <div className={style.manager_actions}>

@@ -11,7 +11,7 @@ interface Props {
 }
 
 const ButtonStyle = styled.button<Omit<Props, 'isLoading'>>`
-    ${tw`relative rounded p-2 tracking-wide font-medium transition-all duration-150 bg-primary-500 text-primary-50 overflow-hidden`};
+    ${tw`relative rounded p-2 tracking-wide font-medium transition-all duration-150 bg-primary-500 text-primary-50 overflow-hidden focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-neutral-800 focus:ring-offset-2`};
 
     ${(props) =>
         ((!props.isSecondary && !props.color) || props.color === 'primary') &&
@@ -22,17 +22,17 @@ const ButtonStyle = styled.button<Omit<Props, 'isLoading'>>`
     ${(props) =>
         props.color === 'grey' &&
         css`
-            ${tw`border-neutral-600 bg-neutral-500 text-neutral-50`};
+            ${tw`border-neutral-600 bg-neutral-700  focus:ring-neutral-700  text-neutral-50`};
 
             &:hover:not(:disabled) {
-                ${tw`bg-neutral-600 border-neutral-700`};
+                ${tw`bg-neutral-700 border-neutral-700`};
             }
         `};
 
     ${(props) =>
         props.color === 'green' &&
         css<Props>`
-            ${tw`border-green-600 bg-green-500 text-green-50`};
+            ${tw`border-green-600 bg-green-500 focus:ring-green-500  text-green-50`};
 
             ${(props) =>
                 props.isSecondary &&
@@ -46,7 +46,7 @@ const ButtonStyle = styled.button<Omit<Props, 'isLoading'>>`
     ${(props) =>
         props.color === 'red' &&
         css<Props>`
-            ${tw`border-red-600 bg-red-500 text-red-50`};
+            ${tw`border-red-600 bg-red-500 focus:ring-red-500  text-red-50`};
 
             ${(props) =>
                 props.isSecondary &&

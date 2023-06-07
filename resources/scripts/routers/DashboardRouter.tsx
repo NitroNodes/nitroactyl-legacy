@@ -4,16 +4,18 @@ import DashboardContainer from '@/components/dashboard/DashboardContainer';
 import { NotFound } from '@/components/elements/ScreenBlock';
 import TransitionRouter from '@/TransitionRouter';
 import SubNavigation from '@/components/elements/SubNavigation';
-import { useLocation } from 'react-router';
+import { useLocation, useRouteMatch } from 'react-router';
 import Spinner from '@/components/elements/Spinner';
 import routes from '@/routers/routes';
 import SidePanel from '@/components/SideBar';
 import MobileNavigation from '@/components/MobileNavigation';
 import useWindowDimensions from '@/plugins/useWindowDimensions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default () => {
     const location = useLocation();
     const { width } = useWindowDimensions();
+
     return (
         <>
             {width >= 1800 ? <SidePanel /> : <MobileNavigation />}
@@ -22,9 +24,14 @@ export default () => {
                     <div>
                         {routes.account
                             .filter((route) => !!route.name)
-                            .map(({ path, name, exact = false }) => (
-                                <NavLink key={path} to={`/account/${path}`.replace('//', '/')} exact={exact}>
-                                    {name}
+                            .map((route) => (
+                                <NavLink
+                                    key={route.path}
+                                    to={`/account/${route.path}`.replace('//', '/')}
+                                    exact={route.exact}
+                                >
+                                    {route.icon && <FontAwesomeIcon icon={route.icon} className={'mr-1'} />}{' '}
+                                    {route.name}
                                 </NavLink>
                             ))}
                     </div>
@@ -36,9 +43,14 @@ export default () => {
                     <div>
                         {routes.store
                             .filter((route) => !!route.name)
-                            .map(({ path, name, exact = false }) => (
-                                <NavLink key={path} to={`/store/${path}`.replace('//', '/')} exact={exact}>
-                                    {name}
+                            .map((route) => (
+                                <NavLink
+                                    key={route.path}
+                                    to={`/store/${route.path}`.replace('//', '/')}
+                                    exact={route.exact}
+                                >
+                                    {route.icon && <FontAwesomeIcon icon={route.icon} className={'mr-1'} />}{' '}
+                                    {route.name}
                                 </NavLink>
                             ))}
                     </div>

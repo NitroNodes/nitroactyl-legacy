@@ -75,9 +75,9 @@ const LoginContainer = ({ history }: RouteComponentProps) => {
         >
             {({ isSubmitting, setSubmitting, submitForm }) => (
                 <LoginFormContainer title={'Login'} css={tw`w-full flex`}>
-                    <Field light type={'text'} label={'Username or Email'} name={'username'} disabled={isSubmitting} />
+                    <Field type={'text'} label={'Username or Email'} name={'username'} disabled={isSubmitting} />
                     <div css={tw`mt-6`}>
-                        <Field light type={'password'} label={'Password'} name={'password'} disabled={isSubmitting} />
+                        <Field type={'password'} label={'Password'} name={'password'} disabled={isSubmitting} />
                     </div>
                     <div css={tw`mt-6`}>
                         <Button type={'submit'} size={'xlarge'} isLoading={isSubmitting} disabled={isSubmitting}>
@@ -102,13 +102,13 @@ const LoginContainer = ({ history }: RouteComponentProps) => {
                     <div css={tw`mt-4 text-center`}>
                         <Link
                             to={'/auth/password'}
-                            css={tw`text-xs text-neutral-500 tracking-wide no-underline uppercase hover:text-neutral-600`}
+                            css={tw`text-xs text-neutral-200 tracking-wide no-underline uppercase transition duration-150 hover:text-primary-400`}
                         >
                             Forgot password?
                         </Link>
                         <Link
                             to={'/auth/register'}
-                            css={tw`ml-2 text-xs text-neutral-500 tracking-wide no-underline uppercase hover:text-neutral-600`}
+                            css={tw`ml-2 text-xs text-neutral-200 tracking-wide no-underline uppercase transition duration-150 hover:text-primary-400`}
                         >
                             Register
                         </Link>

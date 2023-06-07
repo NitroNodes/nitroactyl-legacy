@@ -1,7 +1,6 @@
 import TransferListener from '@/components/server/TransferListener';
 import React, { useEffect, useState } from 'react';
 import { NavLink, Route, Switch, useRouteMatch } from 'react-router-dom';
-import MobileNavigation from '@/components/MobileNavigation';
 import TransitionRouter from '@/TransitionRouter';
 import WebsocketHandler from '@/components/server/WebsocketHandler';
 import { ServerContext } from '@/state/server';
@@ -20,6 +19,7 @@ import { useLocation } from 'react-router';
 import ConflictStateRenderer from '@/components/server/ConflictStateRenderer';
 import PermissionRoute from '@/components/elements/PermissionRoute';
 import routes from '@/routers/routes';
+import MobileNavigation from '@/components/MobileNavigation';
 import useWindowDimensions from '@/plugins/useWindowDimensions';
 import SidePanel from '@/components/SideBar';
 
@@ -27,6 +27,7 @@ export default () => {
     const match = useRouteMatch<{ id: string }>();
     const location = useLocation();
     const { width } = useWindowDimensions();
+
     const rootAdmin = useStoreState((state) => state.user.data!.rootAdmin);
     const [error, setError] = useState('');
 
@@ -84,11 +85,15 @@ export default () => {
                                         route.permission ? (
                                             <Can key={route.path} action={route.permission} matchAny>
                                                 <NavLink to={to(route.path, true)} exact={route.exact}>
+                                                    {route.icon && (
+                                                        <FontAwesomeIcon icon={route.icon} className={'mr-1'} />
+                                                    )}{' '}
                                                     {route.name}
                                                 </NavLink>
                                             </Can>
                                         ) : (
                                             <NavLink key={route.path} to={to(route.path, true)} exact={route.exact}>
+                                                {route.icon && <FontAwesomeIcon icon={route.icon} className={'mr-1'} />}{' '}
                                                 {route.name}
                                             </NavLink>
                                         )

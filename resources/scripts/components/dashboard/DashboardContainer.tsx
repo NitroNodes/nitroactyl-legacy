@@ -12,7 +12,10 @@ import tw from 'twin.macro';
 import useSWR from 'swr';
 import { PaginatedResult } from '@/api/http';
 import Pagination from '@/components/elements/Pagination';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import Button from '../elements/Button';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default () => {
     const { search } = useLocation();
@@ -54,18 +57,22 @@ export default () => {
             description={'Select a server to view, update or modify.'}
             showFlashKey={'dashboard'}
         >
-            {rootAdmin && (
-                <div css={tw`mb-2 flex justify-end items-center`}>
-                    <p css={tw`uppercase text-xs text-neutral-400 mr-2`}>
-                        {showOnlyAdmin ? "Showing others' servers" : 'Showing your servers'}
-                    </p>
+            <div css={tw`mb-2 flex justify-end items-center`}>
+                {rootAdmin && (
                     <Switch
                         name={'show_all_servers'}
                         defaultChecked={showOnlyAdmin}
                         onChange={() => setShowOnlyAdmin((s) => !s)}
                     />
-                </div>
-            )}
+                )}
+                <Link className={'ml-2'} to='/store/create'>
+                    <Button>
+                        <FontAwesomeIcon icon={faPlus} className='mr-2' />
+                        Create
+                    </Button>
+                </Link>
+            </div>
+
             {!servers ? (
                 <Spinner centered size={'large'} />
             ) : (
