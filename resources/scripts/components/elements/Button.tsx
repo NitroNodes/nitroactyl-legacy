@@ -22,7 +22,7 @@ const ButtonStyle = styled.button<Omit<Props, 'isLoading'>>`
     ${(props) =>
         props.color === 'grey' &&
         css`
-            ${tw`border-neutral-600 bg-neutral-700  focus:ring-neutral-700  text-neutral-50`};
+            ${tw`border-neutral-600 bg-neutral-700  focus:ring-primary-500  text-neutral-50`};
 
             &:hover:not(:disabled) {
                 ${tw`bg-neutral-700 border-neutral-700`};

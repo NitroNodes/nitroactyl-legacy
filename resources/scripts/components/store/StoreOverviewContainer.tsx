@@ -1,4 +1,4 @@
-import { faMoneyBillWave, faPlusCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBillWave, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import PageContentBlock from '../elements/PageContentBlock';
@@ -142,8 +142,7 @@ export default function OverviewContainer() {
                                                     color={'red'}
                                                     className={'mt-2 w-1/2'}
                                                 >
-                                                    <FontAwesomeIcon icon={faTrash} className={'mx-auto'} />
-                                                    &nbsp;Delete
+                                                    Delete
                                                 </Button>
                                             </div>
                                         </div>
@@ -158,13 +157,13 @@ export default function OverviewContainer() {
                     </Pagination>
                 )}
             </div>
-            <p className={'text-3xl  text-gray-200 text-left mt-4 px-4'}>Actions</p>
+            <p className={'text-3xl  text-gray-200 text-left mt-4 px-4'}>Quick Actions</p>
             <div className={'lg:grid lg:grid-cols-2 gap-4 my-4'}>
                 <div className={'bg-gray-800 text-center rounded shadow-lg p-2 px-4 m-2 '}>
                     <FontAwesomeIcon className='py-6' size='6x' icon={faPlusCircle} />
                     <p className={'text-3xl text-gray-200'}>Want to create a server?</p>
                     <Link to={`/store/create`}>
-                        <Button className={'my-4 w-1/2'}>
+                        <Button className={'my-4 w-1/2'} color='grey'>
                             <FontAwesomeIcon icon={faPlusCircle} className={'mx-auto'} />
                             &nbsp;Create
                         </Button>
@@ -174,7 +173,9 @@ export default function OverviewContainer() {
                     <FontAwesomeIcon className='py-6' size='6x' icon={faMoneyBillWave} />
                     <p className={'text-3xl text-gray-200'}>Run out of credits?</p>
                     <Link to={`/store/funds`}>
-                        <Button className={'my-4 w-1/2'}>Deposit</Button>
+                        <Button className={'my-4 w-1/2'} color='grey'>
+                            Add Balance
+                        </Button>
                     </Link>
                 </div>
             </div>

@@ -2,15 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCogs,
-    faPlus,
-    faLayerGroup,
-    faSignOutAlt,
-    faUser,
-    faQuestion,
-    faBook,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCogs, faPlus, faLayerGroup, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useStoreState } from 'easy-peasy';
 import { ApplicationStore } from '@/state';
 import SearchContainer from '@/components/dashboard/search/SearchContainer';
@@ -76,8 +68,12 @@ export default () => {
                 </div>
                 <RightNavigation className={'flex h-full items-center justify-center'}>
                     <SearchContainer />
-                    <Tooltip placement={'bottom'} content={'Server List'}>
-                        <NavLink to={'/'} exact>
+                    <Tooltip placement={'bottom'} content={'Server'}>
+                        <NavLink
+                            to={'/'}
+                            exact
+                            className={location.pathname.startsWith('/server') ? ' shadow-[inset_0_-2px_#6B46C1];' : ''}
+                        >
                             <FontAwesomeIcon icon={faLayerGroup} />
                         </NavLink>
                     </Tooltip>
@@ -86,7 +82,7 @@ export default () => {
                             <FontAwesomeIcon icon={faPlus} />
                         </NavLink>
                     </Tooltip>
-                    <Tooltip placement={'bottom'} content={'Account Settings'}>
+                    <Tooltip placement={'bottom'} content={'Account'}>
                         <NavLink to={'/account'}>
                             <FontAwesomeIcon icon={faUser} />
                         </NavLink>

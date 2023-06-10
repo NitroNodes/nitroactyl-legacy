@@ -14,7 +14,7 @@ import { PaginatedResult } from '@/api/http';
 import Pagination from '@/components/elements/Pagination';
 import { Link, useLocation } from 'react-router-dom';
 import Button from '../elements/Button';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faDollarSign, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default () => {
@@ -58,6 +58,18 @@ export default () => {
             showFlashKey={'dashboard'}
         >
             <div css={tw`mb-2 flex justify-end items-center`}>
+                <Link className='mr-4' to='/store/create'>
+                    <Button color='grey'>
+                        <FontAwesomeIcon icon={faPlus} className='mr-2' />
+                        Create
+                    </Button>
+                </Link>
+                <Link className='mr-4' to='/store/funds'>
+                    <Button color='grey'>
+                        <FontAwesomeIcon icon={faDollarSign} className='mr-2' />
+                        Add Balance
+                    </Button>
+                </Link>
                 {rootAdmin && (
                     <Switch
                         name={'show_all_servers'}
@@ -65,12 +77,6 @@ export default () => {
                         onChange={() => setShowOnlyAdmin((s) => !s)}
                     />
                 )}
-                <Link className={'ml-2'} to='/store/create'>
-                    <Button>
-                        <FontAwesomeIcon icon={faPlus} className='mr-2' />
-                        Create
-                    </Button>
-                </Link>
             </div>
 
             {!servers ? (

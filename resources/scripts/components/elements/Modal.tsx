@@ -41,7 +41,7 @@ const ModalContainer = styled.div<{ alignTop?: boolean }>`
     margin-bottom: auto;
 
     .close-icon {
-        ${tw`absolute right-0 m-4 p-2 text-white cursor-pointer text-neutral-100 transition duration-150`};
+        ${tw`absolute right-0 m-2 p-2 text-white cursor-pointer text-neutral-100 transition duration-150`};
 
         &:hover {
             ${tw`transform rotate-90 text-white`}

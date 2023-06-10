@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import styled, { css, keyframes } from 'styled-components/macro';
 import tw from 'twin.macro';
 import ErrorBoundary from '@/components/elements/ErrorBoundary';
 
@@ -16,38 +15,41 @@ interface Spinner extends React.FC<Props> {
     Suspense: React.FC<Props>;
 }
 
-const spin = keyframes`
-    to { transform: rotate(360deg); }
-`;
-
-// noinspection CssOverwrittenProperties
-const SpinnerComponent = styled.div<Props>`
-    ${tw`w-8 h-8`};
-    border-width: 3px;
-    border-radius: 50%;
-    animation: ${spin} 1s cubic-bezier(0.55, 0.25, 0.25, 0.7) infinite;
-
-    ${(props) =>
-        props.size === 'small'
-            ? tw`w-4 h-4 border-2`
-            : props.size === 'large'
-            ? css`
-                  ${tw`w-16 h-16`};
-                  border-width: 6px;
-              `
-            : null};
-
-    border-color: ${(props) => (!props.isBlue ? 'rgba(255, 255, 255, 0.2)' : 'hsla(212, 92%, 43%, 0.2)')};
-    border-top-color: ${(props) => (!props.isBlue ? 'rgb(255, 255, 255)' : 'hsl(212, 92%, 43%)')};
-`;
-
 const Spinner: Spinner = ({ centered, ...props }) =>
     centered ? (
         <div css={[tw`flex justify-center items-center`, props.size === 'large' ? tw`m-20` : tw`m-6`]}>
-            <SpinnerComponent {...props} />
+            <svg
+                className={
+                    props.size === 'small' ? 'animate-spin text-white h-5 w-5' : ' animate-spin text-white h-8 w-8'
+                }
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                {...props}
+            >
+                <circle className='opacity-25' cx={12} cy={12} r={10} stroke='currentColor' strokeWidth={4} />
+                <path
+                    className='opacity-75'
+                    fill='currentColor'
+                    d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                />
+            </svg>
         </div>
     ) : (
-        <SpinnerComponent {...props} />
+        <svg
+            className={props.size === 'small' ? 'animate-spin text-white h-5 w-5' : ' animate-spin text-white h-8 w-8'}
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            {...props}
+        >
+            <circle className='opacity-25' cx={12} cy={12} r={10} stroke='currentColor' strokeWidth={4} />
+            <path
+                className='opacity-75'
+                fill='currentColor'
+                d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+            />
+        </svg>
     );
 Spinner.displayName = 'Spinner';
 

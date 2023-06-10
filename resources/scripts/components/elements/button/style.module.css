@@ -47,7 +47,7 @@
 
 .text {
     @apply bg-gray-700 text-gray-50;
-    @apply hover:bg-gray-700 active:bg-gray-700 focus:ring-neutral-700;
+    @apply hover:bg-gray-700 active:bg-gray-700 focus:ring-primary-500;
 
     &.secondary {
         @apply hover:bg-gray-500 active:bg-gray-500;

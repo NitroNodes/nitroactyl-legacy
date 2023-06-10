@@ -9,7 +9,6 @@ import {
     faPlus,
     faSearch,
     faSignOutAlt,
-    faDollarSign,
     faQuestion,
     faBook,
 } from '@fortawesome/free-solid-svg-icons';
@@ -39,10 +38,10 @@ export default () => {
         <>
             {visible && <SearchModal appear visible={visible} onDismissed={() => setVisible(false)} />}
             <div className='fixed top-0 left-0 z-[40] w-56 h-screen bg-neutral-800 shadow-md overflow-x-hidden'>
-                <div className='flex flex-grow flex-col overflow-y-auto h-screen  pb-4 pt-5 overflow-x-hidden'>
-                    <Link to='/' className='inline-flex space-y-5 px-4 transition duration-150'>
+                <div className='flex flex-grow flex-col overflow-y-auto h-screen pb-4 pt-5 overflow-x-hidden'>
+                    <Link to='/' className='inline-flex px-4 transition duration-150'>
                         <img className='h-8 w-auto' src={logo || defaultLogo} alt={name + ' Logo'} />
-                        <p className='absolute left-[60px] text-xl top-0.5 px-2 font-semibold text-white'>{name}</p>
+                        <p className='ml-[20px] text-xl font-semibold mx-auto text-white'>{name}</p>
                     </Link>
                     <div className='mt-5 flex flex-grow flex-col overflow-x-hidden'>
                         <nav className='flex-1 space-y-2 bg-neutral-800' aria-label='Sidebar'>
@@ -135,7 +134,7 @@ export default () => {
                                     <Avatar />
                                 </div>
                                 <Link to='/account' className='ml-3'>
-                                    <p className='text-sm font-medium text-neutral-200 group-hover:text-neutral-100'>
+                                    <p className='text-sm font-medium text-neutral-300 group-hover:text-neutral-100'>
                                         {username}
                                     </p>
                                     <p className='text-xs font-medium text-neutral-300 group-hover:text-neutral-200'>

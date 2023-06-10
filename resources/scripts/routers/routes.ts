@@ -58,6 +58,7 @@ interface ServerRouteDefinition extends RouteDefinition {
 }
 
 interface Routes {
+    // All of the routes available under "/store"
     store: RouteDefinition[];
     // All of the routes available under "/account"
     account: RouteDefinition[];
@@ -75,6 +76,12 @@ export default {
             exact: true,
         },
         {
+            path: '/activity',
+            name: 'Activity',
+            icon: faBook,
+            component: ActivityLogContainer,
+        },
+        {
             path: '/api',
             name: 'API',
             icon: faCode,
@@ -85,12 +92,6 @@ export default {
             name: 'SSH Keys',
             icon: faKey,
             component: AccountSSHContainer,
-        },
-        {
-            path: '/activity',
-            name: 'Activity',
-            icon: faBook,
-            component: ActivityLogContainer,
         },
     ],
     store: [

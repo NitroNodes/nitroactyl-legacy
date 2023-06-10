@@ -1,9 +1,13 @@
-import React, { forwardRef } from 'react';
-import { Field as FormikField, FieldProps } from 'formik';
-import Input from '@/components/elements/Input';
+import type { FieldProps } from 'formik';
+import { Field as FormikField } from 'formik';
+import type { InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
+import tw, { styled } from 'twin.macro';
+
 import Label from '@/components/elements/Label';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import Input, { Textarea } from '@/components/elements/Input';
+import InputError from '@/components/elements/InputError';
+import React from 'react';
 
 interface OwnProps {
     name: string;
@@ -11,15 +15,13 @@ interface OwnProps {
     label?: string;
     description?: string;
     validate?: (value: any) => undefined | string | Promise<any>;
-    rightIcon?: IconDefinition;
-    onRightIconClick?: () => void;
 }
 
-type Props = OwnProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name'>;
+type Props = OwnProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'name'>;
 
 const Field = forwardRef<HTMLInputElement, Props>(
-    ({ id, name, light = false, label, description, validate, rightIcon, onRightIconClick, ...props }, ref) => (
-        <FormikField name={name} validate={validate}>
+    ({ id, name, light = false, label, description, validate, ...props }, ref) => (
+        <FormikField innerRef={ref} name={name} validate={validate}>
             {({ field, form: { errors, touched } }: FieldProps) => (
                 <div>
                     {label && (
@@ -33,28 +35,59 @@ const Field = forwardRef<HTMLInputElement, Props>(
                         {...props}
                         isLight={light}
                         hasError={!!(touched[field.name] && errors[field.name])}
-                        ref={ref}
-                        rightIcon={
-                            rightIcon && (
-                                <span onClick={onRightIconClick} className='field-right-icon'>
-                                    <FontAwesomeIcon icon={rightIcon} />
-                                </span>
-                            )
-                        }
                     />
                     {touched[field.name] && errors[field.name] ? (
-                        <p className='input-help error'>
-                            {errors[field.name]?.charAt(0).toUpperCase() + errors[field.name]?.slice(1)}
+                        <p className={'input-help error'}>
+                            {(errors[field.name] as string).charAt(0).toUpperCase() +
+                                (errors[field.name] as string).slice(1)}
                         </p>
                     ) : description ? (
-                        <p className='input-help'>{description}</p>
+                        <p className={'input-help'}>{description}</p>
                     ) : null}
                 </div>
             )}
         </FormikField>
     )
 );
-
 Field.displayName = 'Field';
 
 export default Field;
+
+type TextareaProps = OwnProps & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'name'>;
+
+export const TextareaField = forwardRef<HTMLTextAreaElement, TextareaProps>(function TextareaField(
+    { id, name, light = false, label, description, validate, className, ...props },
+    ref
+) {
+    return (
+        <FormikField innerRef={ref} name={name} validate={validate}>
+            {({ field, form: { errors, touched } }: FieldProps) => (
+                <div className={className}>
+                    {label && (
+                        <Label htmlFor={id} isLight={light}>
+                            {label}
+                        </Label>
+                    )}
+                    <Textarea
+                        id={id}
+                        {...field}
+                        {...props}
+                        isLight={light}
+                        hasError={!!(touched[field.name] && errors[field.name])}
+                    />
+                    <InputError errors={errors} touched={touched} name={field.name}>
+                        {description || null}
+                    </InputError>
+                </div>
+            )}
+        </FormikField>
+    );
+});
+TextareaField.displayName = 'TextareaField';
+
+export const FieldRow = styled.div`
+    ${tw`grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 mb-6`};
+    & > div {
+        ${tw`sm:w-full sm:flex sm:flex-col`};
+    }
+`;

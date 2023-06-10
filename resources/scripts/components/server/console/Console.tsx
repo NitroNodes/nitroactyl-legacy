@@ -217,7 +217,7 @@ export default ({ popup }: Props) => {
                         onClick={() => {
                             window.open(`${window.location.toString()}?popup=true`, '', 'menubar=no');
                         }}
-                        css={tw`absolute right-0 top-0 z-10 mt-2 mr-2`}
+                        css={tw`absolute text-neutral-100 right-0 top-0 z-10 mt-2 mr-2`}
                     >
                         <FontAwesomeIcon icon={faExternalLinkAlt} />
                     </button>
