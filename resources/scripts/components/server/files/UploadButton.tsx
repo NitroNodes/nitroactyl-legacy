@@ -82,13 +82,14 @@ export default ({ className }: WithClassname) => {
                             url,
                             { files: file },
                             {
+                                withCredentials: true,
                                 signal: controller.signal,
                                 headers: { 'Content-Type': 'multipart/form-data' },
                                 params: { directory },
                                 onUploadProgress: (data) => onUploadProgress(data, file.name),
                             }
                         )
-                        .then(() => timeouts.value.push(setTimeout(() => removeFileUpload(file.name), 500)))
+                        .then(() => timeouts.value.push(setTimeout(() => removeFileUpload(file.name), 50
                 );
         });
 
