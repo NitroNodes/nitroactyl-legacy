@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4b5a06c69d864694603693f4397c52b1",
+    "content-hash": "bfd9f1b371e4146452a8b267b1f5e223",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -6936,16 +6936,16 @@
         },
         {
             "name": "symfony/postmark-mailer",
-            "version": "v6.2.10",
+            "version": "v6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/postmark-mailer.git",
-                "reference": "34a5aad8ad77074067e06b19edc8605410c73906"
+                "reference": "3294c1b98fbc53fdd149f947c209b4503de77797"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/postmark-mailer/zipball/34a5aad8ad77074067e06b19edc8605410c73906",
-                "reference": "34a5aad8ad77074067e06b19edc8605410c73906",
+                "url": "https://api.github.com/repos/symfony/postmark-mailer/zipball/3294c1b98fbc53fdd149f947c209b4503de77797",
+                "reference": "3294c1b98fbc53fdd149f947c209b4503de77797",
                 "shasum": ""
             },
             "require": {
@@ -6953,8 +6953,12 @@
                 "psr/event-dispatcher": "^1",
                 "symfony/mailer": "^5.4.21|^6.2.7"
             },
+            "conflict": {
+                "symfony/http-foundation": "<6.2"
+            },
             "require-dev": {
-                "symfony/http-client": "^5.4|^6.0"
+                "symfony/http-client": "^5.4|^6.0",
+                "symfony/webhook": "^6.3"
             },
             "type": "symfony-mailer-bridge",
             "autoload": {
@@ -6982,7 +6986,7 @@
             "description": "Symfony Postmark Mailer Bridge",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/postmark-mailer/tree/v6.2.10"
+                "source": "https://github.com/symfony/postmark-mailer/tree/v6.3.0"
             },
             "funding": [
                 {
@@ -6998,7 +7002,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-14T16:23:31+00:00"
+            "time": "2023-04-21T14:42:22+00:00"
         },
         {
             "name": "symfony/process",
