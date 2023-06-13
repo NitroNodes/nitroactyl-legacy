@@ -1,15 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import { Line } from 'react-chartjs-2';
 import { ServerContext } from '@/state/server';
+import { bytesToString } from '@/lib/formatters';
+import React, { useEffect, useRef } from 'react';
 import { SocketEvent } from '@/components/server/events';
 import useWebsocketEvent from '@/plugins/useWebsocketEvent';
-import { Line } from 'react-chartjs-2';
-import { useChart, useChartTickLabel } from '@/components/server/console/chart';
-import { hexToRgba } from '@/lib/helpers';
-import { bytesToString } from '@/lib/formatters';
-import { CloudDownloadIcon, CloudUploadIcon } from '@heroicons/react/solid';
-import { theme } from 'twin.macro';
 import ChartBlock from '@/components/server/console/ChartBlock';
+import { useChart, useChartTickLabel } from '@/components/server/console/chart';
 import Tooltip from '@/components/elements/tooltip/Tooltip';
+import { CloudDownloadIcon, CloudUploadIcon } from '@heroicons/react/solid';
+import { hexToRgba } from '@/lib/helpers';
+import { theme } from 'twin.macro';
 
 export default () => {
     const status = ServerContext.useStoreState((state) => state.status.value);
@@ -17,6 +17,7 @@ export default () => {
     const previous = useRef<Record<'tx' | 'rx', number>>({ tx: -1, rx: -1 });
 
     const cpu = useChartTickLabel('CPU', limits.cpu, '%', 2);
+    const disk = useChartTickLabel('Disk', limits.disk, 'MiB');
     const memory = useChartTickLabel('Memory', limits.memory, 'MiB');
     const network = useChart('Network', {
         sets: 2,
@@ -44,6 +45,7 @@ export default () => {
     useEffect(() => {
         if (status === 'offline') {
             cpu.clear();
+            disk.clear();
             memory.clear();
             network.clear();
         }
@@ -56,7 +58,9 @@ export default () => {
         } catch (e) {
             return;
         }
+
         cpu.push(values.cpu_absolute);
+        disk.push(Math.floor(values.disk_bytes / 1024 / 1024));
         memory.push(Math.floor(values.memory_bytes / 1024 / 1024));
         network.push([
             previous.current.tx < 0 ? 0 : Math.max(0, values.network.tx_bytes - previous.current.tx),
@@ -71,6 +75,9 @@ export default () => {
             <ChartBlock title={'CPU Load'}>
                 <Line {...cpu.props} />
             </ChartBlock>
+            <ChartBlock title={'Disk'}>
+                <Line {...disk.props} />
+            </ChartBlock>
             <ChartBlock title={'Memory'}>
                 <Line {...memory.props} />
             </ChartBlock>
@@ -79,10 +86,10 @@ export default () => {
                 legend={
                     <>
                         <Tooltip arrow content={'Inbound'}>
-                            <CloudDownloadIcon className={'mr-2 w-4 h-4 text-yellow-400'} />
+                            <CloudDownloadIcon className={'mr-2 h-4 w-4 text-yellow-400'} />
                         </Tooltip>
                         <Tooltip arrow content={'Outbound'}>
-                            <CloudUploadIcon className={'w-4 h-4 text-cyan-400'} />
+                            <CloudUploadIcon className={'h-4 w-4 text-cyan-400'} />
                         </Tooltip>
                     </>
                 }

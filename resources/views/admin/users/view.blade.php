@@ -46,17 +46,6 @@
                             <input type="text" name="name_last" value="{{ $user->name_last }}" class="form-control form-autocomplete-stop">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label">Default Language</label>
-                        <div>
-                            <select name="language" class="form-control">
-                                @foreach($languages as $key => $value)
-                                    <option value="{{ $key }}" @if($user->language === $key) selected @endif>{{ $value }}</option>
-                                @endforeach
-                            </select>
-                            <p class="text-muted"><small>The default language to use when rendering the Panel for this user.</small></p>
-                        </div>
-                    </div>
                 </div>
                 <div class="box-footer">
                     {!! csrf_field() !!}
@@ -102,6 +91,43 @@
             </div>
         </div>
     </form>
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Associated Servers</h3>
+            </div>
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Server Name</th>
+                            <th>Access</th>
+                            <th>Node</th>
+                            <th style="width:15%;">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($servers as $server)
+                        <tr>
+                            <td><code>{{ $server->uuidShort }}</code></td>
+                            <td><a href="{{ route('admin.servers.view', $server->id) }}">{{ $server->name }}</a></td>
+                            <td>
+                                @if($server->owner_id === $user->id)
+                                <span class="label bg-purple">Owner</span>
+                                @else
+                                <span class="label bg-blue">Subuser</span>
+                                @endif
+                            </td>
+                            <td><a href="{{ route('admin.nodes.view', $server->node->id) }}">{{ $server->node->name }}</a></td>
+                            <td class="centered">@if($server->suspended != 1)<span class="label label-success">Active</span>@else<span class="label label-warning">Suspended</span>@endif</td>
+                            </td>
+                            @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     <div class="col-xs-12">
         <div class="box box-danger">
             <div class="box-header with-border">

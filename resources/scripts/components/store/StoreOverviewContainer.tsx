@@ -45,8 +45,10 @@ export default function OverviewContainer() {
                     title: 'success',
                     message: 'Your server has been successfully deleted.',
                 });
-                // @ts-expect-error this is valid
-                window.location = '/';
+
+                const { data: servers } = useSWR<PaginatedResult<Server>>(['/api/client/servers', false, page], () =>
+                    getServers({ page, type: undefined })
+                );
             })
             .catch(() => {
                 setConfirm(false);
@@ -104,7 +106,7 @@ export default function OverviewContainer() {
                     <Button
                         disabled={name !== serverName}
                         type={'submit'}
-                        className={'mt-4'}
+                        className={'mt-6'}
                         form={'delete-server-form'}
                     >
                         Delete server
@@ -164,8 +166,7 @@ export default function OverviewContainer() {
                     <p className={'text-3xl text-gray-200'}>Want to create a server?</p>
                     <Link to={`/store/create`}>
                         <Button className={'my-4 w-1/2'} color='grey'>
-                            <FontAwesomeIcon icon={faPlusCircle} className={'mx-auto'} />
-                            &nbsp;Create
+                            Create
                         </Button>
                     </Link>
                 </div>

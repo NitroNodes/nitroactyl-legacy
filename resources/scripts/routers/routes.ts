@@ -32,7 +32,9 @@ import {
     faCode,
     faPlus,
     faDollarSign,
+    faChartBar,
 } from '@fortawesome/free-solid-svg-icons';
+import ServerGraphsContainer from '@/components/server/console/ServerGraphsContainer';
 
 // Each of the router files is already code split out appropriately — so
 // all of the items above will only be loaded in when that router is loaded.
@@ -123,6 +125,13 @@ export default {
             icon: faTerminal,
             component: ServerConsole,
             exact: true,
+        },
+        {
+            path: '/graphs',
+            permission: null,
+            name: 'Graphs',
+            icon: faChartBar,
+            component: ServerGraphsContainer,
         },
         {
             path: '/activity',

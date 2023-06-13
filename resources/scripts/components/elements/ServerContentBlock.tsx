@@ -13,7 +13,7 @@ const ServerContentBlock: React.FC<Props> = ({ title, description, children, ...
     return (
         <PageContentBlock title={`${name} | ${title}`} {...props}>
             {description && (
-                <div className={'my-10'}>
+                <div className={'my-[1rem]'}>
                     <h1 className={'text-5xl text-neutral-100'}>{title}</h1>
                     <h3 className={'text-2xl text-neutral-300'}>{description}</h3>
                 </div>
