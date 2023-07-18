@@ -1,6 +1,6 @@
 .button {
     @apply px-4 py-2 inline-flex items-center justify-center overflow-hidden;
-    @apply rounded font-medium text-sm text-primary-50 transition-all duration-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-neutral-800 focus:ring-offset-2;
+    @apply rounded-md font-medium text-sm text-primary-50 transition-all duration-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-neutral-800 focus:ring-offset-2;
 
     /* Sizing Controls */
     &.small {

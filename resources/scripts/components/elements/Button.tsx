@@ -11,7 +11,7 @@ interface Props {
 }
 
 const ButtonStyle = styled.button<Omit<Props, 'isLoading'>>`
-    ${tw`relative rounded p-2 tracking-wide font-medium transition-all duration-150 bg-primary-500 text-primary-50 overflow-hidden focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-neutral-800 focus:ring-offset-2`};
+    ${tw`relative rounded-md p-2 tracking-wide font-medium transition-all duration-150 bg-primary-500 text-primary-50 overflow-hidden focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-neutral-800 focus:ring-offset-2`};
 
     ${(props) =>
         ((!props.isSecondary && !props.color) || props.color === 'primary') &&

@@ -32,7 +32,7 @@ export default () => {
                 });
             })
             .catch((error) => {
-                addFlash({ key: 'console:share', type: 'error', message: httpErrorToHuman(error) });
+                addFlash({ key: 'console:share', type: 'danger', message: httpErrorToHuman(error) });
             });
     };
 
@@ -52,7 +52,7 @@ export default () => {
                 <span className={'text-gray-400'}>Offline</span>
             ) : (
                 <div className={'cursor-pointer hover:text-gray-300'} onClick={submit}>
-                    Click Save
+                    Click to Save
                 </div>
             )}
         </>

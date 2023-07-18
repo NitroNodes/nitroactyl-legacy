@@ -3,7 +3,7 @@
 }
 
 .panel {
-    @apply relative bg-gray-800 rounded max-w-xl w-full mx-auto shadow-lg text-left;
+    @apply relative bg-gray-800 rounded-md max-w-xl w-full mx-auto shadow-lg text-left;
 }
 
 .title {

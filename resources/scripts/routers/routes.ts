@@ -153,6 +153,13 @@ export default {
             name: undefined,
             component: FileEditContainer,
         },
+        // {
+        //     path: '/plugins',
+        //     permission: 'plugin.*',
+        //     name: 'Plugins',
+        //     icon: faCube,
+        //     component: PluginContainer,
+        // },
         {
             path: '/databases',
             permission: 'database.*',

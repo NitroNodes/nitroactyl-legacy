@@ -28,7 +28,7 @@ export default function FundsContainer() {
                 <ContentBox title={'Account Balance'} showFlashes={'account:balance'} css={tw`sm:mt-0`}>
                     <h1 css={tw`text-7xl flex justify-center items-center`}>
                         {balance}
-                        <span className={'text-base'}>$</span>
+                        <span className={'text-md'}>€</span>
                     </h1>
                 </ContentBox>
                 <ContentBox title={'Purchase credits'} showFlashes={'account:gateways'} css={tw`mt-8 sm:mt-0 sm:ml-8`}>

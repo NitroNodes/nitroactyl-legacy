@@ -2,7 +2,7 @@ import { faMoneyBillWave, faPlusCircle } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import PageContentBlock from '../elements/PageContentBlock';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import useSWR from 'swr';
 import { PaginatedResult } from '@/api/http';
 import getServers from '@/api/getServers';
@@ -19,6 +19,8 @@ import Input from '../elements/Input';
 
 export default function OverviewContainer() {
     const { search } = useLocation();
+    const history = useHistory();
+
     const defaultPage = Number(new URLSearchParams(search).get('page') || '1');
     const [page, setPage] = useState(!isNaN(defaultPage) && defaultPage > 0 ? defaultPage : 1);
 
@@ -45,10 +47,7 @@ export default function OverviewContainer() {
                     title: 'success',
                     message: 'Your server has been successfully deleted.',
                 });
-
-                const { data: servers } = useSWR<PaginatedResult<Server>>(['/api/client/servers', false, page], () =>
-                    getServers({ page, type: undefined })
-                );
+                history.go(0);
             })
             .catch(() => {
                 setConfirm(false);
@@ -125,7 +124,7 @@ export default function OverviewContainer() {
                                     {items.map((server: Server) => (
                                         <div
                                             key={server.uuid}
-                                            className='bg-neutral-800 h-44 py-4 mt-2 rounded shadow-lg mb-2 w-full mx-auto'
+                                            className='bg-neutral-800 h-44 py-4 mt-2 rounded-md shadow-lg mb-2 w-full mx-auto'
                                         >
                                             <p className='text-xl font-bold break-words mt-2'>{server.name}</p>
                                             <p>
@@ -161,7 +160,7 @@ export default function OverviewContainer() {
             </div>
             <p className={'text-3xl  text-gray-200 text-left mt-4 px-4'}>Quick Actions</p>
             <div className={'lg:grid lg:grid-cols-2 gap-4 my-4'}>
-                <div className={'bg-gray-800 text-center rounded shadow-lg p-2 px-4 m-2 '}>
+                <div className={'bg-gray-800 text-center rounded-md shadow-lg p-2 px-4 m-2 '}>
                     <FontAwesomeIcon className='py-6' size='6x' icon={faPlusCircle} />
                     <p className={'text-3xl text-gray-200'}>Want to create a server?</p>
                     <Link to={`/store/create`}>
@@ -170,7 +169,7 @@ export default function OverviewContainer() {
                         </Button>
                     </Link>
                 </div>
-                <div className={'bg-gray-800 text-center rounded shadow-lg p-2 px-4 m-2 '}>
+                <div className={'bg-gray-800 text-center rounded-md shadow-lg p-2 px-4 m-2 '}>
                     <FontAwesomeIcon className='py-6' size='6x' icon={faMoneyBillWave} />
                     <p className={'text-3xl text-gray-200'}>Run out of credits?</p>
                     <Link to={`/store/funds`}>

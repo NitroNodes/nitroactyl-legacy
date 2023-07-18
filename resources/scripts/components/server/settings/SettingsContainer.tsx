@@ -44,7 +44,7 @@ export default () => {
                             </div>
                             <div css={tw`mt-6 flex items-center`}>
                                 <div css={tw`flex-1`}>
-                                    <div css={tw`border-l-4 border-cyan-500 p-3`}>
+                                    <div css={tw`border-l-4 border-primary-500 p-3`}>
                                         <p css={tw`text-xs text-neutral-200`}>
                                             Your SFTP password is the same as the password you use to access this panel.
                                         </p>
@@ -52,7 +52,7 @@ export default () => {
                                 </div>
                                 <div css={tw`ml-4`}>
                                     <a href={`sftp://${username}.${id}@${ip(sftp.ip)}:${sftp.port}`}>
-                                        <Button.Text variant={Button.Variants.Secondary}>Launch SFTP</Button.Text>
+                                        <Button.Text>Launch SFTP</Button.Text>
                                     </a>
                                 </div>
                             </div>

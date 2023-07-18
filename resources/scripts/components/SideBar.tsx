@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import http from '@/api/http';
 import { useLocation } from 'react-router-dom';
 import { useStoreState } from 'easy-peasy';
@@ -22,7 +22,23 @@ export default () => {
     const [visible, setVisible] = useState(false);
     const location = useLocation();
 
+    useEffect(() => {
+        const handleKeyPress = (event: KeyboardEvent) => {
+            if (event.ctrlKey && event.key === 'k') {
+                event.preventDefault();
+                setVisible(true);
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+        };
+    }, []);
+
     const rootAdmin = useStoreState((state) => state.user.data!.rootAdmin);
+    const uuid = useStoreState((state) => state.user.data!.uuid);
     const name = useStoreState((state: ApplicationStore) => state.settings.data!.name);
     const username = useStoreState((state: ApplicationStore) => state.user.data!.username);
     const logo = useStoreState((state: ApplicationStore) => state.settings.data!.logo);
@@ -41,7 +57,7 @@ export default () => {
                 <div className='flex flex-grow flex-col overflow-y-auto h-screen pb-4 pt-5 overflow-x-hidden'>
                     <Link to='/' className='inline-flex px-4 transition duration-150'>
                         <img className='h-8 w-auto' src={logo || defaultLogo} alt={name + ' Logo'} />
-                        <p className='ml-[20px] text-xl font-semibold mx-auto text-white'>{name}</p>
+                        <p className='ml-[28px] text-xl font-semibold mx-auto text-white'>{name}</p>
                     </Link>
                     <div className='mt-5 flex flex-grow flex-col overflow-x-hidden'>
                         <nav className='flex-1 space-y-2 bg-neutral-800' aria-label='Sidebar'>
@@ -49,7 +65,7 @@ export default () => {
                                 onClick={() => {
                                     setVisible(true);
                                 }}
-                                className='group flex mb-4 items-center text-sm font-medium w-[90%] ml-[5%] mr-[5%] transition duration-150 bg-neutral-700 shadow-sm focus:border-primary-500 focus:ring-offset-neutral-800 focus:ring-primary-500 text-neutral-200 focus:ring-offset-2 focus:ring-2 rounded px-4 py-2 outline-none border-0'
+                                className='group flex mb-4 items-center text-sm font-medium w-[90%] ml-[5%] mr-[5%] transition duration-150 bg-neutral-700 shadow-sm text-neutral-200 rounded-md px-4 py-2 outline-none border-0'
                             >
                                 <FontAwesomeIcon
                                     fixedWidth={true}
@@ -63,7 +79,7 @@ export default () => {
                                 exact
                                 activeClassName='bg-primary-500 bg-opacity-20 border-primary-400 text-primary-400'
                                 className={
-                                    'group  flex items-center px-3 py-2 text-md font-medium transition border-l-4 border-transparent duration-150 hover:text-primary-400' +
+                                    'group flex items-center px-3 py-2 text-md font-medium transition border-l-4 border-transparent duration-150 hover:text-primary-400' +
                                     (location.pathname.startsWith('/server')
                                         ? ' border-l-4 bg-opacity-20 border-primary-400 text-primary-400 bg-primary-500'
                                         : '')
@@ -88,9 +104,10 @@ export default () => {
                                 />
                                 <span className='ml-3'>Deploy</span>
                             </NavLink>
-                            <NavLink
-                                to='/discord'
-                                activeClassName='bg-primary-500 bg-opacity-20 border-primary-400 text-primary-400'
+                            <a
+                                rel='noreferrer'
+                                href='https://www.nitronodes.xyz/discord'
+                                target='_blank'
                                 className='group flex items-center px-3 py-2 text-md font-medium transition border-l-4 border-transparent duration-150 hover:text-primary-400'
                             >
                                 <FontAwesomeIcon
@@ -99,10 +116,11 @@ export default () => {
                                     icon={faQuestion}
                                 />
                                 <span className='ml-3'>Support</span>
-                            </NavLink>
-                            <NavLink
-                                to='/docs'
-                                activeClassName='bg-primary-500 bg-opacity-20 border-primary-400 text-primary-400'
+                            </a>
+                            <a
+                                rel='noreferrer'
+                                href='https://nitronodes.xyz/docs'
+                                target='_blank'
                                 className='group flex items-center px-3 py-2 text-md font-medium transition border-l-4 border-transparent duration-150 hover:text-primary-400'
                             >
                                 <FontAwesomeIcon
@@ -111,7 +129,7 @@ export default () => {
                                     icon={faBook}
                                 />
                                 <span className='ml-3'>Docs</span>
-                            </NavLink>
+                            </a>
                             {rootAdmin && (
                                 <a
                                     href='/admin'
@@ -131,14 +149,14 @@ export default () => {
                         <div className='group block w-full flex-shrink-0 ml-2'>
                             <div className='flex items-center ml-2'>
                                 <div>
-                                    <Avatar />
+                                    <Avatar name={uuid || 'system'} />
                                 </div>
                                 <Link to='/account' className='ml-3'>
                                     <p className='text-sm font-medium text-neutral-300 group-hover:text-neutral-100'>
                                         {username}
                                     </p>
                                     <p className='text-xs font-medium text-neutral-300 group-hover:text-neutral-200'>
-                                        View profile
+                                        Manage account
                                     </p>
                                 </Link>
                                 <div className='ml-3 overflow-x-hidden'>

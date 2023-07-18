@@ -68,7 +68,6 @@ export default ({ match, location }: RouteComponentProps<{ token: string }>) => 
                     </div>
                     <div css={tw`mt-6`}>
                         <Field
-                            light
                             label={'New Password'}
                             name={'password'}
                             type={'password'}
@@ -83,12 +82,12 @@ export default ({ match, location }: RouteComponentProps<{ token: string }>) => 
                             Reset Password
                         </Button>
                     </div>
-                    <div css={tw`mt-6 text-center`}>
+                    <div css={tw`mt-4 text-center`}>
                         <Link
                             to={'/auth/login'}
-                            css={tw`text-xs text-neutral-500 tracking-wide no-underline uppercase hover:text-neutral-600`}
+                            css={tw`ml-2 text-xs text-neutral-200 tracking-wide no-underline uppercase transition duration-150 hover:text-primary-400`}
                         >
-                            Return to Login
+                            Login
                         </Link>
                     </div>
                 </LoginFormContainer>

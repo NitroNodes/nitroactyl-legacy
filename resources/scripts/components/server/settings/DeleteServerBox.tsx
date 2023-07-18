@@ -84,9 +84,7 @@ export default () => {
                 </strong>
             </p>
             <div className={'mt-6 font-medium text-right'}>
-                <Button.Danger variant={Button.Variants.Secondary} onClick={() => setWarn(true)}>
-                    Delete Server
-                </Button.Danger>
+                <Button.Danger onClick={() => setWarn(true)}>Delete Server</Button.Danger>
             </div>
         </TitledGreyBox>
     );
