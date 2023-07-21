@@ -20,7 +20,7 @@ const RightNavigation = styled.div`
 
         &:active,
         &:hover {
-            ${tw`text-neutral-100 bg-black`};
+            ${tw`text-neutral-100 bg-primary-500 bg-opacity-20`};
         }
 
         &:active,
@@ -72,7 +72,9 @@ export default () => {
                         <NavLink
                             to={'/'}
                             exact
-                            className={location.pathname.startsWith('/server') ? ' shadow-[inset_0_-2px_#6B46C1];' : ''}
+                            className={
+                                location.pathname.startsWith('/server') ? ' shadow-[inset_0_-2px_#6B46C1] active' : ''
+                            }
                         >
                             <FontAwesomeIcon icon={faLayerGroup} />
                         </NavLink>

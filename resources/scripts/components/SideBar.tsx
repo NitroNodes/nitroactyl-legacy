@@ -55,9 +55,13 @@ export default () => {
             {visible && <SearchModal appear visible={visible} onDismissed={() => setVisible(false)} />}
             <div className='fixed top-0 left-0 z-[40] w-56 h-screen bg-neutral-800 shadow-md overflow-x-hidden'>
                 <div className='flex flex-grow flex-col overflow-y-auto h-screen pb-4 pt-5 overflow-x-hidden'>
-                    <Link to='/' className='inline-flex px-4 transition duration-150'>
-                        <img className='h-8 w-auto' src={logo || defaultLogo} alt={name + ' Logo'} />
-                        <p className='ml-[28px] text-xl font-semibold mx-auto text-white'>{name}</p>
+                    <Link to='/' className='flex items-center px-4 transition duration-150'>
+                        <img
+                            className='h-auto my-auto max-h-[36px] w-auto mr-4'
+                            src={logo || defaultLogo}
+                            alt={name + ' Logo'}
+                        />
+                        <p className='text-xl font-semibold text-white'>{name}</p>
                     </Link>
                     <div className='mt-5 flex flex-grow flex-col overflow-x-hidden'>
                         <nav className='flex-1 space-y-2 bg-neutral-800' aria-label='Sidebar'>
@@ -146,11 +150,18 @@ export default () => {
                         </nav>
                     </div>
                     <div className='flex flex-shrink-0'>
-                        <div className='group block w-full flex-shrink-0 ml-2'>
-                            <div className='flex items-center ml-2'>
-                                <div>
-                                    <Avatar name={uuid || 'system'} />
-                                </div>
+                        <div
+                            className={
+                                'group block w-full py-2 flex-shrink-0  ' +
+                                (location.pathname.startsWith('/account')
+                                    ? 'bg-opacity-20 text-primary-400 bg-primary-500'
+                                    : '')
+                            }
+                        >
+                            <div className='flex items-center ml-4'>
+                                <Link to='/account' className='my-auto'>
+                                    <Avatar size={'28'} name={uuid || 'system'} />
+                                </Link>
                                 <Link to='/account' className='ml-3'>
                                     <p className='text-sm font-medium text-neutral-300 group-hover:text-neutral-100'>
                                         {username}
@@ -159,7 +170,7 @@ export default () => {
                                         Manage account
                                     </p>
                                 </Link>
-                                <div className='ml-3 overflow-x-hidden'>
+                                <div className='ml-8 overflow-x-hidden'>
                                     <button
                                         onClick={onTriggerLogout}
                                         className={

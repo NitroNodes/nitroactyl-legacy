@@ -88,7 +88,11 @@ export default () => {
                             />
                         }
                     />
-                    <Input onChange={searchFiles} css={tw`md:mx-6 w-full px-2 mb-4 md:mb-0`} placeholder='Search' />
+                    <Input
+                        onChange={searchFiles}
+                        css={tw`md:mx-6 w-full px-2 mb-4 md:mb-0`}
+                        placeholder='Type to search for files in this directory'
+                    />
 
                     <Can action={'file.create'}>
                         <div className={style.manager_actions}>
@@ -96,7 +100,7 @@ export default () => {
                             <NewDirectoryButton css={tw`whitespace-nowrap`} />
                             <UploadButton />
                             <PullFileButton css={tw`whitespace-nowrap`} />
-                            <NavLink to={`/server/${id}/files/new${window.location.hash}`}>
+                            <NavLink className={'col-span-2'} to={`/server/${id}/files/new${window.location.hash}`}>
                                 <Button css={tw`whitespace-nowrap h-full w-full`}>New File</Button>
                             </NavLink>
                         </div>
